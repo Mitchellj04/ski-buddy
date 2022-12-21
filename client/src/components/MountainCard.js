@@ -6,11 +6,11 @@ const MountainCard = () => {
     const [showMountain, setShowMountain] = useState([])
     
 
-    useEffect(() => {
-        fetch(`/mountain/${id}`)
-        .then((resp) => resp.json())
-        .then((mountain) => setShowMountain(mountain))
-    }, [])
+    // useEffect(() => {
+    //     fetch(`/mountain/${id}`)
+    //     .then((resp) => resp.json())
+    //     .then((mountain) => setShowMountain(mountain))
+    // }, [])
 
   return (
     <div>

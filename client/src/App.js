@@ -5,8 +5,9 @@ import Login from "./components/Login";
 import Mountain from "./components/Mountain";
 import MountainCard from "./components/MountainCard";
 import MountainList from "./components/MoutainList";
-import SingUp from "./components/SingUp";
+import SignUp from "./components/SignUp";
 import TrailsList from "./components/TrailsList";
+import Profile from "./components/Profile";
 
 function App() {
 
@@ -23,19 +24,22 @@ function App() {
 
   console.log(currentUser)
 
-  if (!currentUser) return <Login onLogin={setUser} />;
+  if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
 
   return (
     <>
     <Router>
-    <Header></Header>
+    <Header setCurrentUser={setCurrentUser}></Header>
+    <div>
     <Routes>
       <Route exact path="/" element={<Mountain/>}/>
       <Route exact path="/alltrails" element={<TrailsList/>}/>
       <Route path="/mountain/:id" element={<MountainCard/>}/>
       <Route path="/login" element={<Login setCurrentUser={setCurrentUser}/>}/>
-      <Route path="/signup" element={<SingUp setCurrentUser={setCurrentUser}/>}/>
+      <Route path="/signup" element={<SignUp setCurrentUser={setCurrentUser}/>}/>
+      <Route path="/profile" element={<Profile currentUser={currentUser}/>}/>
     </Routes>
+    </div>
     </Router>
     </>
   )

@@ -1,5 +1,5 @@
 class MountainSerializer < ActiveModel::Serializer
-  attributes :id, :name, :number_trails, :number_lifts, :elevation, :average_ticket
+  attributes :id, :name, :number_trails, :number_lifts, :elevation, :average_ticket, :image_url
   has_many :trails
 
   def average_ticket

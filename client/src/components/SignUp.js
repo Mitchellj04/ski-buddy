@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-const SingUp = ({setCurrentUser}) => {
+const SignUp = ({setCurrentUser}) => {
     const [username, setUsername] = useState('')
     const navigate = useNavigate()
     const [password, setPassword] = useState('')
+    const [name, setName] = useState('')
+    const [age, setAge] = useState('')
+    const [bio, setBio] = useState('')
+    const [experience_level, SetExperience]= useState('')
     const [login, setLogin] = useState('')
 
 
@@ -13,7 +17,10 @@ const SingUp = ({setCurrentUser}) => {
         
         const user = {
             username, 
-            password
+            password, 
+            name,
+            age,
+            experience_level
         }
         fetch('/users',{
             method: "POST", 
@@ -32,18 +39,30 @@ const SingUp = ({setCurrentUser}) => {
    const handleNavigate = () => {
     navigate("/")
    }
-   console.log(username)
-   console.log(password)
+   const handleLogin = () =>{
+    navigate("/login")
+   }
+
 
   return (
     <>
     <form onClick={handleSubmit}>
         <li>Username:<input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)}></input></li>
+        <li>Name:<input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)}></input></li>
+        <li>Age:<input type="number" id="age" value={age} onChange={(e) => setAge(e.target.value)}></input></li>
+        Experience:<select type="select" id="experience" value={experience_level} onChange={(e) => SetExperience(e.target.value)}>
+            <option value={""}></option>
+           <option value={"Beginner"}>Beginner</option>
+            <option value={"Advanced"}>Advanced</option>
+            <option value={"Expert"}>Expert</option>
+        </select>
         <li>Password:<input type="text" id="password" value={password} onChange={(e) => setPassword(e.target.value)}></input></li>
         <button type='submit' value={"Sign Up"} onClick={handleNavigate}>Sign Up</button>
+        <p>Already have an account?</p>
+        <button type='submit' value={"Login"} onClick={handleLogin}>Login</button>
     </form>    
     </>
   )
 }
 
-export default SingUp
+export default SignUp

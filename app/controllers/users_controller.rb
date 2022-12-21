@@ -1,15 +1,10 @@
 class UsersController < ApplicationController
     wrap_parameters format: []
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
-    skip_before_action :authorized, only: :create
+    skip_before_action :authorize, only: :create
 
     def show 
-        current_user = User.find_by(session[:user_id])
-        if (current_user)
-        render json: current_user, status: :accepted
-        else 
-        render json: {error: "Not authorized"}, status: :unauthorized
-        end
+        render json: @current_user, status: :accepted
     end
 
     def create 
@@ -24,7 +19,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:username, :password)
+        params.permit(:username, :password, :name, :age)
     end
 
 end
