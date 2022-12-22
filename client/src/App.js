@@ -11,7 +11,8 @@ import Profile from "./components/Profile";
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState('')
+  const [currentUser, setCurrentUser] = useState(null)
+  const [mountains, setMountains] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:4000/me")
@@ -21,6 +22,14 @@ function App() {
       }
     })
   }, [ ])
+
+ 
+
+  useEffect(() => {
+    fetch('/mountains')
+    .then((resp) => resp.json())
+    .then((list) => {setMountains(list)});
+  }, [])
 
   console.log(currentUser)
 
@@ -32,9 +41,9 @@ function App() {
     <Header setCurrentUser={setCurrentUser}></Header>
     <div>
     <Routes>
-      <Route exact path="/" element={<Mountain/>}/>
-      <Route exact path="/alltrails" element={<TrailsList/>}/>
-      <Route path="/mountain/:id" element={<MountainCard/>}/>
+      <Route exact path="/" element={<Mountain mountains={mountains}/>}/>
+      {/* <Route exact path="/alltrails" element={<TrailsList/>}/> */}
+      <Route path="/mountains/:id" element={<MountainCard mountains={mountains}/>}/>
       <Route path="/login" element={<Login setCurrentUser={setCurrentUser}/>}/>
       <Route path="/signup" element={<SignUp setCurrentUser={setCurrentUser}/>}/>
       <Route path="/profile" element={<Profile currentUser={currentUser}/>}/>

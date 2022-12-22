@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const SignUp = ({setCurrentUser}) => {
     const [username, setUsername] = useState('')
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
@@ -14,7 +14,6 @@ const SignUp = ({setCurrentUser}) => {
 
    function handleSubmit(e) {
         e.preventDefault()
-        
         const user = {
             username, 
             password, 
@@ -29,18 +28,20 @@ const SignUp = ({setCurrentUser}) => {
         })
         .then(resp => {
             if(resp.ok){
-                resp.json().then(setCurrentUser)
-                
+                resp.json().then((user) => setCurrentUser(user));
+            }
+            else {
+                resp.json().then((err) => console.log(err))
             }
         })
         // navigate("/")
    }
 
    const handleNavigate = () => {
-    navigate("/")
+    // navigate("/")
    }
    const handleLogin = () =>{
-    navigate("/login")
+    // navigate("/login")
    }
 
 
@@ -57,9 +58,7 @@ const SignUp = ({setCurrentUser}) => {
             <option value={"Expert"}>Expert</option>
         </select>
         <li>Password:<input type="text" id="password" value={password} onChange={(e) => setPassword(e.target.value)}></input></li>
-        <button type='submit' value={"Sign Up"} onClick={handleNavigate}>Sign Up</button>
-        <p>Already have an account?</p>
-        <button type='submit' value={"Login"} onClick={handleLogin}>Login</button>
+        <button type='submit' value={"Sign Up"}>Sign Up</button>
     </form>    
     </>
   )

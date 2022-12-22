@@ -6,7 +6,7 @@ class MountainsController < ApplicationController
     end
 
     def show 
-        mountain = Mountain.find(params[:id])
+        mountain = find_mountain
         if mountain 
         render json: mountain 
         else 
@@ -16,6 +16,10 @@ class MountainsController < ApplicationController
 
 
     private 
+
+    def find_mountain
+        Mountain.find(params[:id])
+    end
 
     def mountain_params 
         params.permit()

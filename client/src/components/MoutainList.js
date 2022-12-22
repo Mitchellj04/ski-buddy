@@ -4,14 +4,20 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import { useNavigate, useParams } from "react-router-dom";
 
 function MountainList({list}){
+    const navigate = useNavigate('')
+    const {id} = useParams()
+    // const [trails, setTrails] = useState(list.trails)
 
-    const [trails, setTrails] = useState(list.trails)
+    // console.log(trails)
 
-    console.log(trails)
+    // const trailMap = trails.map((trail) => <TrailsList trail={trail}/>)
 
-    const trailMap = trails.map((trail) => <TrailsList trail={trail}/>)
+    const handleMountain = () => {
+        navigate(`/mountains/${id}`)
+    }
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -37,7 +43,7 @@ function MountainList({list}){
                 <p>Number of Trails: {list.number_trails}</p>
                 <p>Number of Lists: {list.number_lifts}</p>
                 <p>Mountain Summit Elevation: {list.elevation}</p>
-                <p>Trails</p>
+                <button onClick={handleMountain}>Trails >>></button>
                 </Item>
             </Grid>
         </Grid>

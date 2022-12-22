@@ -1,20 +1,24 @@
 import React, { useEffect } from 'react'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Unstable_Grid2';
 
 const TrailsList = ({trail}) => {
 
-    useEffect(() => {
-        fetch('/mountain/:id')
-        .then((resp) => resp.json())
-        .then((trails) => console.log(trails))
-    })
 
-    console.log(trail)
+   
   return (
-    <div>
-        <p>{trail.trail_name}</p>
-        <p>{trail.difficulty}</p>
-        <p>{trail.groomed}</p>
-    </div>
+    <Box>
+      <Grid container        
+                direction="row"
+                justify="center"
+                alignItems="stretch" >
+        <Grid item xs={9}>
+      <p>Trail Details: </p><p>{trail.trail_name}</p>
+        <p>difficulty: {trail.difficulty}</p>
+        <p>Groomed: {trail.groomed}</p>
+        </Grid>
+      </Grid>
+    </Box>
   )
 }
 

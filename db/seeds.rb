@@ -9,6 +9,7 @@
 
 Mountain.delete_all
 Trail.delete_all
+User.delete_all
 
 stratton = Mountain.create(name: "Stratton",image_url: "https://res.cloudinary.com/liftopia/image/upload/c_fit,d_defaults:default_logo_1.png,f_auto,h_980,q_auto,w_980/v1/production/trail_maps/d6e2cdee28d3edc9ceee668f5b63e8f2.jpg", number_trails: 99, number_lifts: 11, elevation: 3940, average_cost: 167.00)
 okemo = Mountain.create(name: "Okemo",image_url: "https://s3.onthesnow.com/images/trailmaps/vermont/okemo-mountain-resort/20161118205447/xlarge.jpg", number_trails: 127, number_lifts: 20, elevation: 3344,average_cost: 123.00 )

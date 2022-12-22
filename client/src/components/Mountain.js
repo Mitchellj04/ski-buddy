@@ -4,15 +4,9 @@ import Trails from "./Trails";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 
-function Mountain(){
+function Mountain({mountains}){
 
-    const [mountains, setMountains] = useState([])
-
-    useEffect(() => {
-      fetch('/mountains')
-      .then((resp) => resp.json())
-      .then((list) => {setMountains(list)});
-    }, [])
+ 
     console.log(mountains)
 
     // const mountain = mountains.map((list) => <MountainList list={list}/>)
