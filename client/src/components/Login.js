@@ -1,10 +1,11 @@
+import { Button } from '@mui/material'
 import React, { useState } from 'react'
 import Header from './Header'
 import LoginForm from './LoginForm'
 import SignUp from './SignUp'
 
 
-const Login = ({setCurrentUser}) => {
+const Login = ({setCurrentUser, currentUser}) => {
 
     const [loggedIn, setLoggedIn] = useState(true)
 
@@ -12,18 +13,18 @@ const Login = ({setCurrentUser}) => {
   return (
     <div>
         {/* <Header /> */}
-        <h3>Ski-Buddy Login</h3>
+        {/* <h3>Ski-Buddy Login</h3> */}
         { loggedIn ? (
             <>
             <LoginForm setCurrentUser={setCurrentUser}/>
             <p>Don't have an account?</p>
-            <button onClick={() => setLoggedIn(false)}>SignUp</button>
+            <Button onClick={() => setLoggedIn(false)}>SignUp</Button>
             </>
         ) : (
             <>
-            <SignUp />
+            <SignUp setCurrentUser={setCurrentUser} currentUser={currentUser}/>
             <p>Already have an account?</p>
-            <button onClick={() => setLoggedIn(true)}>Login</button>
+            <Button onClick={() => setLoggedIn(true)}>Login</Button>
             </>
         )}
     </div>  

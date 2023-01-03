@@ -43,9 +43,9 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Mountain mountains={mountains}/>}/>
       {/* <Route exact path="/alltrails" element={<TrailsList/>}/> */}
-      <Route path="/mountains/:id" element={<MountainCard mountains={mountains}/>}/>
-      <Route path="/login" element={<Login setCurrentUser={setCurrentUser}/>}/>
-      <Route path="/signup" element={<SignUp setCurrentUser={setCurrentUser}/>}/>
+      <Route path="/mountains/:id" element={<MountainCard currentUser={currentUser} mountains={mountains}/>}/>
+      <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>}/>
+      <Route path="/signup" element={<SignUp />}/>
       <Route path="/profile" element={<Profile currentUser={currentUser}/>}/>
     </Routes>
     </div>

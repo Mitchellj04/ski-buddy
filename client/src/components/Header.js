@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography} from '@mui/material'
+import { AppBar, makeStyles, Toolbar, Typography} from '@mui/material'
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 // import MenuIcon from '@mui/icons-material';
@@ -10,11 +10,13 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from "react-router-dom";
+import '../App.css'
 
 function Header({setCurrentUser}) {
   const [auth, setAuth] = useState(true);
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState(null);
+  
 
   const handleChange = (e) => {
     setAuth(e.target.value);
@@ -45,24 +47,27 @@ function Header({setCurrentUser}) {
   };
   return (
     <div className='navBar'>
-     <AppBar position="static">
+     <AppBar style={{textAlign: "center", alignItems: "center", width: "100%",}} >
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 8 }}
-          >  <HomeIcon onClick={handleHome}/>
-          </IconButton>
+          <div className='home'>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 8 }}
+            >  <HomeIcon onClick={handleHome}/>
+            </IconButton>
+          </div>
           <Typography variant='h4' style={{}}>Ski Buddy</Typography>
           {auth && (
-            <div>
+            <div className='menu'>
               <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
+                style={{align:"right"}}
                 onClick={handleMenu}
                 color="inherit"
               >

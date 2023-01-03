@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_174838) do
     t.string "description"
     t.float "rating"
     t.integer "user_id"
+    t.integer "mountain_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

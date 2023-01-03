@@ -1,22 +1,25 @@
 import { useState } from "react";
+import '../App.css'
 import TrailsList from "./TrailsList";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { useNavigate, useParams } from "react-router-dom";
+import { Button, Typography } from "@mui/material";
 
 function MountainList({list}){
     const navigate = useNavigate('')
     const {id} = useParams()
     // const [trails, setTrails] = useState(list.trails)
-
+    console.log(list.id)
     // console.log(trails)
 
     // const trailMap = trails.map((trail) => <TrailsList trail={trail}/>)
 
     const handleMountain = () => {
-        navigate(`/mountains/${id}`)
+        navigate(`/mountains/${list.id}`)
+    
     }
 
     const Item = styled(Paper)(({ theme }) => ({
@@ -24,7 +27,10 @@ function MountainList({list}){
         ...theme.typography.body2,
         padding: theme.spacing(1),
         textAlign: 'center',
+        alignItems: 'center',
         color: theme.palette.text.secondary,
+        width: 600,
+        marginRight: 100
       }));   
 
     return (
@@ -33,17 +39,19 @@ function MountainList({list}){
         <Grid container        
                 direction="row"
                 justify="center"
-                alignItems="stretch" 
-                //style={{margin: 10, boxShadow:" 5px 5px 5px 5px pink"}}
+
+                style={{margin: 10, boxShadow:" 3px 3px 3px 3px #7F7F80"}}
                 >
         <Grid item xs={9}>
                 <Item>
-                <h1>{list.name}</h1>
+                <Typography variant="h2" color="gray" fontWeight={"Bold"}>{list.name}</Typography>
+                <div className="image-div">
                 <img src={list.image_url} className={"mountain-image"}></img>
-                <p>Number of Trails: {list.number_trails}</p>
-                <p>Number of Lists: {list.number_lifts}</p>
-                <p>Mountain Summit Elevation: {list.elevation}</p>
-                <button onClick={handleMountain}>Trails >>></button>
+                </div>
+                <Typography variant="h6" color="primary" fontWeight={"Bold"}>Number of Trails:<Typography variant="body1" color="black" className="body1">{list.number_trails}</Typography> </Typography>
+                <Typography variant="h6" color="primary" fontWeight={"Bold"}>Number of Lists:<Typography variant="body1" color="black">{list.number_lifts}</Typography></Typography>
+                <Typography variant="h6" color="primary" fontWeight={"Bold"}>Mountain Summit Elevation: <Typography variant="body1" color="black">{list.elevation} ft</Typography></Typography>
+                <Button onClick={handleMountain}>Trails >>></Button>
                 </Item>
             </Grid>
         </Grid>

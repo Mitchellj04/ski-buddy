@@ -13,6 +13,7 @@ function Mountain({mountains}){
 
     const mountainList = mountains.map((list) => <MountainList list={list} />)
     // mount
+    
 
     return (
         <>
