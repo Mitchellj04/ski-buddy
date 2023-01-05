@@ -12,11 +12,11 @@ import FormLabel from '@mui/material/FormLabel';
 const Profile = ({currentUser}) => {
 
     const [hideEditTrail, setHideEditTrail] = useState(false)
-    const [username, setUsername] = useState('')
-    const [name, setName] = useState('')
-    const [age, setAge] = useState('')
-    const [experience, setExperience] = useState('')
-    const [bio, setBio] = useState('')
+    // const [username, setUsername] = useState('')
+    // const [name, setName] = useState('')
+    // const [age, setAge] = useState('')
+    // const [experience, setExperience] = useState('')
+    // const [bio, setBio] = useState('')
     const [profile, setProfile] = useState(currentUser)
     console.log(profile)
     const handleTaskOpen = () => {setHideEditTrail(true)}
@@ -104,9 +104,9 @@ const Profile = ({currentUser}) => {
                   name="radio-buttons-group"
                   style={{ display: 'initial' }}
                   onChange={(e) => console.log(e.target.name)}>
-                  <FormControlLabel value={experience} name="Beginner" control={<Radio />} label="Beginner" />
-                  <FormControlLabel value={experience} name="Advanced" control={<Radio />} label="Advanced" />
-                  <FormControlLabel value={experience} name="Expert" control={<Radio />} label="Expert" />
+                  <FormControlLabel value={profile.experience} name="Beginner" control={<Radio />} label="Beginner" />
+                  <FormControlLabel value={profile.experience} name="Advanced" control={<Radio />} label="Advanced" />
+                  <FormControlLabel value={profile.experience} name="Expert" control={<Radio />} label="Expert" />
               </RadioGroup>
           </FormControl>
           <TextField

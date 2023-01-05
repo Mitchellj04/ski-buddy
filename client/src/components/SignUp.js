@@ -15,9 +15,9 @@ const SignUp = ({setCurrentUser, currentUser}) => {
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
-    const [bio, setBio] = useState('')
-    const [experience_level, SetExperience]= useState('')
-    const [login, setLogin] = useState('')
+    // const [bio, setBio] = useState('')
+    // const [experience_level, SetExperience]= useState('')
+    // const [login, setLogin] = useState('')
     const [userCurrent, setUserCurrent] = useState(null)
 
     const paperStyle ={
@@ -34,6 +34,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
             password, 
             name,
             age,
+
             // experience_level
         }
         fetch('/users',{
@@ -53,40 +54,15 @@ const SignUp = ({setCurrentUser, currentUser}) => {
         // navigate("/")
    }
 
-  
-
-//    function handleSignUp(e){
-//         e.preventDefault()
-//         const user = {
-//             username, 
-//             password, 
-//             name,
-//             age,
-//             // experience_level
-//         }
-//         fetch('/users', {
-//             method: "POST", 
-//             headers:{ 'Content-Type':'application/json'},
-//             body: JSON.stringify(user)
-//         })
-//         .then(resp => {
-//             if(resp.ok){
-//                 resp.json().then((user) => setCurrentUser(user));
-//             }
-//             else {
-//                 resp.json().then((err) => console.log(err))
-//             }
-//         })
-//    }
 
    console.log(currentUser)
 
-   const handleNavigate = () => {
-    // navigate("/")
-   }
-   const handleLogin = () =>{
-    // navigate("/login")
-   }
+//    const handleNavigate = () => {
+//     // navigate("/")
+//    }
+//    const handleLogin = () =>{
+//     // navigate("/login")
+//    }
 
 
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import TrailsList from './TrailsList';
+import React from 'react'
+
 
 const Trails = ({list}) => {
     // const [trails, setTrails] = useState(list.trails)

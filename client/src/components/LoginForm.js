@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 const LoginForm = ({setCurrentUser}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [login, setLogin] = useState('')
+    // const [login, setLogin] = useState('')
     const paperStyle ={
         padding: '30px 20px',
         width: 400, 
@@ -12,9 +12,9 @@ const LoginForm = ({setCurrentUser}) => {
     }
 
 
-    const handleSignUp = () => {
-        // navigate("/signup")
-    }
+    // const handleSignUp = () => {
+    //     // navigate("/signup")
+    // }
 
    function handleSubmit(e) {
         e.preventDefault()
@@ -34,8 +34,8 @@ const LoginForm = ({setCurrentUser}) => {
         })
    }
 
-   console.log(username)
-   console.log(password)
+//    console.log(username)
+//    console.log(password)
 
   return (
     <>

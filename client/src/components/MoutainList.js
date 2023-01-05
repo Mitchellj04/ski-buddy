@@ -1,6 +1,4 @@
-import { useState } from "react";
 import '../App.css'
-import TrailsList from "./TrailsList";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
@@ -10,7 +8,7 @@ import { Button, Typography } from "@mui/material";
 
 function MountainList({list}){
     const navigate = useNavigate('')
-    const {id} = useParams()
+    // const {id} = useParams()
     // const [trails, setTrails] = useState(list.trails)
     console.log(list.id)
     // console.log(trails)

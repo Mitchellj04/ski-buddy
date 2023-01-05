@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 // import { useParams } from 'react-router'
-import Mountain from './Mountain'
 import TrailsList from './TrailsList';
-import {json, useParams} from 'react-router-dom';
-import { Dialog, DialogActions, DialogContent, DialogTitle, Accordion, AccordionActions, AccordionSummary, Typography, AccordionDetails, Box, Paper, Button, TextField} from '@mui/material';
+import { useParams} from 'react-router-dom';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Accordion, AccordionSummary, Typography, AccordionDetails, Box, Paper, Button, TextField} from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import IconButton from '@mui/material/IconButton';
 import Comments from './Comments';
 const MountainCard = ({mountains, currentUser}) => {
 
@@ -15,10 +13,10 @@ const MountainCard = ({mountains, currentUser}) => {
     const [showComments, setShowComments] = useState([])
     const {id} = useParams();
     const [hideEditTrail, setHideEditTrail] = useState(false)
-    const [newComment, setNewComment] = useState({})
+    // const [newComment, setNewComment] = useState({})
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [user_id, setUser_id] = useState('')
+    // const [user_id, setUser_id] = useState('')
     const handleTaskOpen = () => {setHideEditTrail(true)}
     const handleTaskClose = () => {setHideEditTrail(false)}
 

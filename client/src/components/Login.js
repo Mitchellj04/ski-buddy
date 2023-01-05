@@ -1,6 +1,6 @@
 import { Button } from '@mui/material'
 import React, { useState } from 'react'
-import Header from './Header'
+
 import LoginForm from './LoginForm'
 import SignUp from './SignUp'
 

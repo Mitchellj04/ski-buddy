@@ -1,7 +1,4 @@
 import MountainList from "./MoutainList";
-import { useState, useEffect } from "react";
-import Trails from "./Trails";
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 
 function Mountain({mountains}){

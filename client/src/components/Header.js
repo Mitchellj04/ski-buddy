@@ -15,9 +15,9 @@ function Header({setCurrentUser}) {
   const [anchorEl, setAnchorEl] = useState(null);
   
 
-  const handleChange = (e) => {
-    setAuth(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setAuth(e.target.value);
+  // };
 
   const handleMenu = (e) => {
     setAnchorEl(e.currentTarget);

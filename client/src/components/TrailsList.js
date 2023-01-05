@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-brands-svg-icons'
 import { faCircle, faDiamond, faSnowplow, faSquare } from '@fortawesome/free-solid-svg-icons'
 import { Typography } from '@mui/material';
 
@@ -32,7 +31,7 @@ const TrailsList = ({trail}) => {
   else if(trail.difficulty === "Very Difficult"){
     return <FontAwesomeIcon icon="fa-solid fa-diamond" style={{color: "black"}}/>
   }
-  else if(trail.difficulty == "More Difficult"){
+  else if(trail.difficulty === "More Difficult"){
    return <FontAwesomeIcon icon="fa-solid fa-square" style={{color: "blue"}}/>
  }
  else{
