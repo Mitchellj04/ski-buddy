@@ -15,6 +15,8 @@ class MountainsController < ApplicationController
     end
 
 
+
+
     private 
 
     def find_mountain

@@ -69,10 +69,10 @@ const MountainCard = ({mountains, currentUser}) => {
     // console.log(showComments)
     // console.log(showMountain.trails)
     // console.log(showTrails)
-    console.log(title)
+    // console.log(title)
 
     const trailMap = showTrails.map((trail) => <TrailsList trail={trail}/>)
-    const commentMap = showComments.map((comments) => <Comments comments={comments} currentUser={currentUser} />)
+    const commentMap = showComments.map((comments) => <Comments comments={comments} currentUser={currentUser} showComments={showComments} setShowComments={setShowComments}/>)
 
   return (
     <>

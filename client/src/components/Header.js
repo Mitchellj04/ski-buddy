@@ -1,11 +1,8 @@
-import { AppBar, makeStyles, Toolbar, Typography} from '@mui/material'
+import { AppBar, Toolbar, Typography} from '@mui/material'
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 // import MenuIcon from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import HomeIcon from '@mui/icons-material/Home';

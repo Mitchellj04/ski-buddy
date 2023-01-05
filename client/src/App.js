@@ -4,9 +4,7 @@ import Header from "./components/Header";
 import Login from "./components/Login";
 import Mountain from "./components/Mountain";
 import MountainCard from "./components/MountainCard";
-import MountainList from "./components/MoutainList";
 import SignUp from "./components/SignUp";
-import TrailsList from "./components/TrailsList";
 import Profile from "./components/Profile";
 
 function App() {

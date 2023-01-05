@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users, only: [:create]
-  resources :comments, only: [:create, :destroy]
+  resources :users, only: [:create, :update, :show]
+  resources :comments, only: [:create, :destroy, :show, :update]
   resources :trails, only: [:index]
   resources :mountains, only: [:index, :show]
   post '/login', to: "sessions#create"

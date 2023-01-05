@@ -12,10 +12,20 @@ class UsersController < ApplicationController
        render json: user, status: :ok
     end
 
+    def update 
+        user = @current_user
+        user.update!(user_params)
+        render json: user, status: :ok
+    end
+
     private 
 
     def render_unprocessable(invalid)
         render json: {errors: invalid.record.errors}, stauts: 404
+    end
+
+    def find_user 
+        user.find(params[:id])
     end
 
     def user_params

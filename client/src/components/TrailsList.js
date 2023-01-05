@@ -13,7 +13,7 @@ library.add(faSnowplow, faDiamond, faSquare, faCircle)
 const TrailsList = ({trail}) => {
 
 
-  console.log(trail)
+  // console.log(trail)
 
  function groomedTrail(){
   if (trail.groomed === true){
