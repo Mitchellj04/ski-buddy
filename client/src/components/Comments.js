@@ -14,7 +14,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
     const handleClickOpen = () => {setHideEdit(true);};
     const handleClose = () => {setHideEdit(false);};
     const [value, setValue] = useState(comments.rating)
-    // console.log(comments)
+    console.log(comments)
     
     const paperStyle ={
         padding: '30px 20px',
@@ -92,7 +92,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
         <Typography>{comments.description}</Typography>
         <Rating value={value} precision={0.5}/>
        
-        <Typography fontWeight={"Light"}>User: {currentUser.username}</Typography> 
+        <Typography fontWeight={"Light"}>User: {comments.username}</Typography> 
         {showButton()}
         </Paper>
     </Box>

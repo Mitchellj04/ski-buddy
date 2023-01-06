@@ -10,7 +10,9 @@ const LoginForm = ({setCurrentUser}) => {
         width: 400, 
         margin: '20px auto'
     }
-
+    const fieldStyle = {
+        margin: '5px auto'
+      }
 
     // const handleSignUp = () => {
     //     // navigate("/signup")
@@ -53,10 +55,13 @@ const LoginForm = ({setCurrentUser}) => {
                 fullWidth 
                 label="username"
                 value={username} 
+                style={fieldStyle}
                 onChange={(e) => setUsername(e.target.value)}/>
             <TextField 
                 fullWidth 
+                type="password"
                 label="password"
+                style={fieldStyle}
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)}/>
                 <Button variant="contained" type="submit" color="primary">Login</Button>

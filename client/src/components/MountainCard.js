@@ -6,6 +6,7 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, Accordion, Accordion
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Comments from './Comments';
+import CreateComment from './CreateComment';
 const MountainCard = ({mountains, currentUser}) => {
 
     const [showMountain, setShowMountain] = useState('')
@@ -13,12 +14,7 @@ const MountainCard = ({mountains, currentUser}) => {
     const [showComments, setShowComments] = useState([])
     const {id} = useParams();
     const [hideEditTrail, setHideEditTrail] = useState(false)  
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [rating, setRating] = useState('')
 
-    // const [newComment, setNewComment] = useState({})
-    // const [user_id, setUser_id] = useState('')
 
     const handleTaskOpen = () => {setHideEditTrail(true)}
     const handleTaskClose = () => {setHideEditTrail(false)}
@@ -45,24 +41,7 @@ const MountainCard = ({mountains, currentUser}) => {
     }, [id])
 
 
-    const commentSubmit = (e) => {
-      e.preventDefault()
-      const newComment = {
-        title,
-        description,
-        rating,
-        user_id: currentUser.id, 
-        mountain_id: showMountain.id
-      }
-      fetch('/comments', {
-        method: "POST",
-        headers: {'content-type': 'application/json'},
-        body: JSON.stringify(newComment)
-      })
-      .then((resp) => resp.json())
-      .then((data) => setShowComments((prevState) => [...prevState, data]))
-      setHideEditTrail(false)
-    }
+
 
 
     const trailMap = showTrails.map((trail) => <TrailsList trail={trail} key={trail.id}/>)
@@ -106,35 +85,13 @@ const MountainCard = ({mountains, currentUser}) => {
               onClose={handleTaskClose}
               maxWidth="lg">
               <DialogTitle>Create Comment</DialogTitle>
-              <DialogContent>
-                <TextField
-                  fullWidth
-                  label="title"
-                  name="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}/>
-              </DialogContent>
-              <DialogContent style={commentStyle}>
-                <TextField
-                  fullWidth
-                  label="description"
-                  name="description"
-                  value={description} 
-                  onChange={(e) => setDescription(e.target.value)} />
-              </DialogContent>
-              <DialogContent>
-                <TextField 
-                  fullWidth
-                  type="number"
-                  label="rating"
-                  name="rating"
-                  value={rating}
-                  onChange={(e) => setRating(e.target.value)}/>
-              </DialogContent>
-              <Button color='primary' variant='contained' style={{width: "25%"}} onClick={commentSubmit}>Submit</Button>
-              <DialogActions>
-                <Button onClick={handleTaskClose}>Close</Button>
-              </DialogActions>
+              <CreateComment 
+                setShowComments={setShowComments} 
+                showComments={showComments} 
+                currentUser={currentUser} 
+                showMountain={showMountain} 
+                setHideEditTrail={setHideEditTrail} 
+                handleTaskClose={handleTaskClose}/>
             </Dialog>
             <Typography variant='h4'>Comments:</Typography>
             {commentMap}
