@@ -3,15 +3,18 @@ import CommentEdit from './CommentEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Dialog, DialogActions, DialogContent, DialogTitle} from '@mui/material';
+import Rating from '@mui/material/Rating';
 import React from 'react'
 import { useState } from 'react';
+
 
 const Comments = ({comments, currentUser, showComments, setShowComments}) => {
 
     const [hideEdit, setHideEdit] = useState(false)
     const handleClickOpen = () => {setHideEdit(true);};
     const handleClose = () => {setHideEdit(false);};
-    console.log(comments)
+    const [value, setValue] = useState(comments.rating)
+    // console.log(comments)
     
     const paperStyle ={
         padding: '30px 20px',
@@ -20,6 +23,29 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
         paddingTop: 50
   
     }
+
+    function handleDeleteComment(deleted){
+        const filterDelete = showComments.filter((comment) => {
+          if (comment.id !== deleted) {
+            return comment
+          } else {
+            return null
+          }
+        });
+        setShowComments(filterDelete);
+      }
+
+    function handleDelete(){
+        fetch(`/comments/${comments.id}`, {
+            method: "DELETE", 
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        handleDeleteComment(comments.id)
+        console.log(comments.id)
+    }
+
 
     function showButton(){
         if (currentUser.id === comments.user_id){
@@ -45,7 +71,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
                 keepMounted
                 onClose={handleClose}>
                 <DialogTitle>Edit Comment</DialogTitle>
-                <DialogContent><CommentEdit comments={comments} showComments={showComments} setShowComments={setShowComments}/></DialogContent>
+                <DialogContent><CommentEdit comments={comments} showComments={showComments} setShowComments={setShowComments} setHideEdit={setHideEdit}/></DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Close</Button>
                 </DialogActions>
@@ -58,33 +84,15 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
         }
     }
 
-    function handleDeleteComment(deleted){
-        const filterDelete = showComments.filter((comment) => {
-          if (comment.id !== deleted.id) {
-            return comment
-          } else {
-            return null
-          }
-        });
-        setShowComments(filterDelete);
-      }
 
-    function handleDelete(){
-        fetch(`/comments/${comments.id}`, {
-            method: "DELETE", 
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        handleDeleteComment(comments.id)
-        console.log(comments.id)
-    }
   return (
     <Box>
         <Paper style={paperStyle}>
         <Typography variant='h5' fontWeight={"Bold"} style={{paddingBottom: 10}}>{comments.title}</Typography>
         <Typography>{comments.description}</Typography>
-        <Typography>{comments.rating}</Typography>
+        <Rating value={value} precision={0.5}/>
+       
+        <Typography fontWeight={"Light"}>User: {currentUser.username}</Typography> 
         {showButton()}
         </Paper>
     </Box>

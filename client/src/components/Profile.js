@@ -21,11 +21,18 @@ const Profile = ({currentUser}) => {
     console.log(profile)
     const handleTaskOpen = () => {setHideEditTrail(true)}
     const handleTaskClose = () => {setHideEditTrail(false)}
-    const paperStyle ={
+
+  const paperStyle ={
       padding: '30px 20px',
       width: 400, 
       margin: '20px auto'
   }
+  const profileStyle ={
+    padding: '30px 20px',
+    width: 600, 
+    margin: '20px auto',
+    textAlign: "left"
+}
   const fieldStyle = {
     margin: '5px auto'
   }
@@ -34,6 +41,10 @@ const Profile = ({currentUser}) => {
     width: 500, 
     margin: '20px auto'
 
+  }
+
+  const textStyle = {
+    paddingTop: 10
   }
 
   const handleChange = (e) => {setProfile({...currentUser, [e.target.name]: e.target.value})}
@@ -71,9 +82,7 @@ const Profile = ({currentUser}) => {
         maxWidth="lg">
           <form onSubmit={handleEditSubmit}>
           <DialogTitle>Edit Profile</DialogTitle>
-
           <DialogContent style={paperStyle}>
-            
             <TextField
                 fullWidth 
                 label="username"
@@ -127,12 +136,12 @@ const Profile = ({currentUser}) => {
            </form>
       </Dialog>  
       <Box styler={{alignItems: 'center', textAlign: 'center', width: 500}}>
-        <Paper>
-        <Typography>Username: {currentUser.username} </Typography>
-        <p>Name: {currentUser.name}</p>   
-        <p>Age: {currentUser.age}</p>
-        <p>Skill Level: {currentUser.experience_level}</p>
-        <p>Bio: {currentUser.bio}</p>
+        <Paper style={profileStyle}>
+        <Typography style={textStyle} fontWeight="Bold">Username:<Typography>{currentUser.username}</Typography></Typography>
+        <Typography style={textStyle} fontWeight="Bold">Name: <Typography>{currentUser.name}</Typography></Typography>   
+        <Typography style={textStyle} fontWeight="Bold">Age: <Typography>{currentUser.age}</Typography></Typography>
+        <Typography style={textStyle} fontWeight="Bold">Skill Level: <Typography>{currentUser.experience_level}</Typography></Typography>
+        <Typography style={textStyle} fontWeight="Bold">Bio: <Typography>{currentUser.bio}</Typography></Typography>
         </Paper>
       </Box>
 

@@ -8,7 +8,7 @@ function Mountain({mountains}){
 
     // const mountain = mountains.map((list) => <MountainList list={list}/>)
 
-    const mountainList = mountains.map((list) => <MountainList list={list} />)
+    const mountainList = mountains.map((list) => <MountainList key={list.id} list={list} />)
     // mount
     
 

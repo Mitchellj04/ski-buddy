@@ -12,11 +12,14 @@ const MountainCard = ({mountains, currentUser}) => {
     const [showTrails, setShowTrails] = useState([])
     const [showComments, setShowComments] = useState([])
     const {id} = useParams();
-    const [hideEditTrail, setHideEditTrail] = useState(false)
-    // const [newComment, setNewComment] = useState({})
+    const [hideEditTrail, setHideEditTrail] = useState(false)  
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [rating, setRating] = useState('')
+
+    // const [newComment, setNewComment] = useState({})
     // const [user_id, setUser_id] = useState('')
+
     const handleTaskOpen = () => {setHideEditTrail(true)}
     const handleTaskClose = () => {setHideEditTrail(false)}
 
@@ -32,7 +35,6 @@ const MountainCard = ({mountains, currentUser}) => {
     width: 400, 
     margin: '10px auto'
 }
-    console.log(id)
 
     useEffect(() => {
         fetch(`/mountains/${id}`)
@@ -42,11 +44,13 @@ const MountainCard = ({mountains, currentUser}) => {
         setShowComments(mountain.comments)})
     }, [id])
 
+
     const commentSubmit = (e) => {
       e.preventDefault()
       const newComment = {
         title,
         description,
+        rating,
         user_id: currentUser.id, 
         mountain_id: showMountain.id
       }
@@ -56,21 +60,13 @@ const MountainCard = ({mountains, currentUser}) => {
         body: JSON.stringify(newComment)
       })
       .then((resp) => resp.json())
-      .then((data) => console.log(data))
-      console.log(newComment)
+      .then((data) => setShowComments((prevState) => [...prevState, data]))
+      setHideEditTrail(false)
     }
 
-    // const handleChange = (e) => {
-    //   setNewComment({...newComment, [e.target.name]: e.target.value})
-    // }
 
-    // console.log(showComments)
-    // console.log(showMountain.trails)
-    // console.log(showTrails)
-    // console.log(title)
-
-    const trailMap = showTrails.map((trail) => <TrailsList trail={trail}/>)
-    const commentMap = showComments.map((comments) => <Comments comments={comments} currentUser={currentUser} showComments={showComments} setShowComments={setShowComments}/>)
+    const trailMap = showTrails.map((trail) => <TrailsList trail={trail} key={trail.id}/>)
+    const commentMap = showComments.map((comments) => <Comments key={comments.id} comments={comments} currentUser={currentUser} showComments={showComments} setShowComments={setShowComments}/>)
 
   return (
     <>
@@ -123,8 +119,17 @@ const MountainCard = ({mountains, currentUser}) => {
                   fullWidth
                   label="description"
                   name="description"
-                  // value={username} 
+                  value={description} 
                   onChange={(e) => setDescription(e.target.value)} />
+              </DialogContent>
+              <DialogContent>
+                <TextField 
+                  fullWidth
+                  type="number"
+                  label="rating"
+                  name="rating"
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}/>
               </DialogContent>
               <Button color='primary' variant='contained' style={{width: "25%"}} onClick={commentSubmit}>Submit</Button>
               <DialogActions>

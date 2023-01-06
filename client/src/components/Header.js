@@ -53,7 +53,8 @@ function Header({setCurrentUser}) {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 8 }}
-            >  <HomeIcon onClick={handleHome}/>
+              onClick={handleHome}
+            >  <HomeIcon />
             </IconButton>
           </div>
           <Typography variant='h4' style={{}}>Ski Buddy</Typography>
