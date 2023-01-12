@@ -18,6 +18,10 @@ function App() {
       if(resp.ok){
         resp.json().then((user) => setCurrentUser(user))
       }
+      else{
+        resp.json()
+        .then((error) => console.log(error))
+      }
     })
   }, [ ])
 
@@ -44,7 +48,7 @@ function App() {
       <Route path="/mountains/:id" element={<MountainCard currentUser={currentUser} mountains={mountains}/>}/>
       <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>}/>
       <Route path="/signup" element={<SignUp />}/>
-      <Route path="/profile" element={<Profile currentUser={currentUser}/>}/>
+      <Route path="/profile" element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
     </Routes>
     </div>
     </Router>

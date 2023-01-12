@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react'
 // import { useParams } from 'react-router'
 import TrailsList from './TrailsList';
 import { useParams} from 'react-router-dom';
-import { Dialog, DialogActions, DialogContent, DialogTitle, Accordion, AccordionSummary, Typography, AccordionDetails, Box, Paper, Button, TextField} from '@mui/material';
+import { Dialog, DialogTitle, Accordion, AccordionSummary, Typography, AccordionDetails, Box, Paper, Button} from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Comments from './Comments';
 import CreateComment from './CreateComment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library, text } from '@fortawesome/fontawesome-svg-core'
+import { faCircle, faDiamond, faSnowplow, faSquare, faSnowflake } from '@fortawesome/free-solid-svg-icons'
+
+
+library.add(faSnowplow, faDiamond, faSquare, faCircle, faSnowflake)
+
+
 const MountainCard = ({mountains, currentUser}) => {
 
     const [showMountain, setShowMountain] = useState('')
@@ -25,12 +33,7 @@ const MountainCard = ({mountains, currentUser}) => {
       margin: '20px auto',
       paddingTop: 50
 
-  }
-  const commentStyle ={
-    padding: '10px 10px',
-    width: 400, 
-    margin: '10px auto'
-}
+    }
 
     useEffect(() => {
         fetch(`/mountains/${id}`)
@@ -42,8 +45,6 @@ const MountainCard = ({mountains, currentUser}) => {
 
 
 
-
-
     const trailMap = showTrails.map((trail) => <TrailsList trail={trail} key={trail.id}/>)
     const commentMap = showComments.map((comments) => <Comments key={comments.id} comments={comments} currentUser={currentUser} showComments={showComments} setShowComments={setShowComments}/>)
 
@@ -52,8 +53,12 @@ const MountainCard = ({mountains, currentUser}) => {
       <Box>
         <Paper style={paperStyle}>
           <div>
-            {/* <h1>Moutain</h1> */}
-            <Typography variant='h2' fontWeight={"Bold"} style={{ textAlign: "center" }}>{showMountain.name}</Typography>
+            <Typography 
+              variant='h2' 
+              fontWeight={"Bold"} 
+              style={{ textAlign: "center" }}>
+              {showMountain.name}
+            </Typography>
             <img src={showMountain.image_url}></img>
             <p>Number of Trails: {showMountain.number_trails}</p>
             <p>Number of Lists: {showMountain.number_lifts}</p>
@@ -69,6 +74,14 @@ const MountainCard = ({mountains, currentUser}) => {
                 <div>
                 <Typography variant='h6'>Trail Details: </Typography>
                   {trailMap}
+                  <Typography style={{color: "black", marginTop: 10}}>Condition:</Typography>
+                  <Typography>Grommed: <FontAwesomeIcon icon="fa-solid fa-snowplow" style={{color: "black"}}/> </Typography>
+                  <Typography>Ungroomed: <FontAwesomeIcon icon="fa-solid fa-snowflake" /></Typography>
+                  <Typography style={{color: "black", marginTop: 10}}>Difficulty</Typography>
+                  <Typography>Easiest: <FontAwesomeIcon icon="fa-solid fa-circle" style={{color: "green"}} /> </Typography>
+                  <Typography>More Difficult: <FontAwesomeIcon icon="fa-solid fa-square" style={{color: "blue"}}/></Typography>
+                  <Typography>Very Difficult: <FontAwesomeIcon icon="fa-solid fa-diamond" style={{color: "black"}}/></Typography>
+                  <Typography>Expert (Caution): <FontAwesomeIcon icon="fa-solid fa-diamond" style={{color: "black"}}/><FontAwesomeIcon icon="fa-solid fa-diamond" style={{color: "black"}}/></Typography>
                 </div>
               </AccordionDetails>
             </Accordion>

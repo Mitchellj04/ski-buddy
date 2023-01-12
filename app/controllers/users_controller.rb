@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     private 
 
     def render_unprocessable(invalid)
-        render json: {errors: invalid.record.errors}, stauts: 404
+        render json: {errors: "Unknown user name or password"}, stauts: 404
     end
 
     def find_user 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:username, :password, :name, :age)
+        params.permit(:username, :password, :name, :age, :bio, :experience_level)
     end
 
 end

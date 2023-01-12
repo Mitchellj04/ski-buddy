@@ -1,9 +1,10 @@
-import { Paper, Grid, Typography, Avatar, TextField, Button} from '@mui/material'
+import { Paper, Grid, Typography, Avatar, TextField, Button, Error} from '@mui/material'
 import React, { useState } from 'react'
 
 const LoginForm = ({setCurrentUser}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [errors, setErrors] = useState([])
     // const [login, setLogin] = useState('')
     const paperStyle ={
         padding: '30px 20px',
@@ -33,9 +34,13 @@ const LoginForm = ({setCurrentUser}) => {
             if(resp.ok){
                 resp.json().then(setCurrentUser)
             }
+            else{
+                resp.json().then((error) => setErrors(error))
+            }
         })
    }
-
+   
+console.log()
 //    console.log(username)
 //    console.log(password)
 
@@ -64,6 +69,9 @@ const LoginForm = ({setCurrentUser}) => {
                 style={fieldStyle}
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)}/>
+            {errors.map((error) => (
+                <Error>{error}</Error>
+            ))}
                 <Button variant="contained" type="submit" color="primary">Login</Button>
             </form>
         </Paper>

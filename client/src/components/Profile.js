@@ -9,7 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-const Profile = ({currentUser}) => {
+const Profile = ({currentUser, setCurrentUser}) => {
 
     const [hideEditTrail, setHideEditTrail] = useState(false)
     // const [username, setUsername] = useState('')
@@ -47,10 +47,11 @@ const Profile = ({currentUser}) => {
     paddingTop: 10
   }
 
-  const handleChange = (e) => {setProfile({...currentUser, [e.target.name]: e.target.value})}
+  const handleChange = (e) => {setProfile({...profile, [e.target.name]: e.target.value})}
   // const handleChange = (e) => {console.log(e.target.value)}
 
-  const handleEditSubmit = (currentUser) => {
+  const handleEditSubmit = (e) => {
+    e.preventDefault()
     const updatedUser = {
       username: profile.username,
       name: profile.name,
@@ -67,7 +68,10 @@ const Profile = ({currentUser}) => {
       body: JSON.stringify(updatedUser)
     })
     .then((resp) => resp.json())
-    .then((user) => setProfile(user)) 
+    .then((user) => {setCurrentUser(user) 
+      setHideEditTrail(false)
+    })
+   
   }
    
     console.log(currentUser.id)

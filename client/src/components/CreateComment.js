@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Dialog, DialogActions, DialogContent, DialogTitle, Accordion, AccordionSummary, Typography, AccordionDetails, Box, Paper, Button, TextField} from '@mui/material';
+import React, {  useState } from 'react'
+import { DialogActions, DialogContent, Box, Button, TextField} from '@mui/material';
 
 const CreateComment = (
     {setShowComments, 
@@ -11,6 +11,13 @@ const CreateComment = (
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [rating, setRating] = useState('')
+    const fieldStyle = {
+        margin: '5px auto'
+      }
+    const buttonStyle = {
+        width: 10,
+        margin: '5px auto'
+    }
 
 
     const commentSubmit = (e) => {
@@ -40,12 +47,15 @@ const CreateComment = (
                 label="title"
                 name="title"
                 value={title}
+                style={fieldStyle}
                 onChange={(e) => setTitle(e.target.value)}/>
             <TextField
                 fullWidth
+                type="textbox"
                 label="description"
                 name="description"
                 value={description} 
+                style={fieldStyle}
                 onChange={(e) => setDescription(e.target.value)} />
             <TextField 
                 fullWidth
@@ -53,9 +63,10 @@ const CreateComment = (
                 label="rating"
                 name="rating"
                 value={rating}
+                style={fieldStyle}
                 onChange={(e) => setRating(e.target.value)}/>     
         </DialogContent>
-        <Button color='primary' variant='contained' style={{width: "25%"}} onClick={commentSubmit}>Submit</Button>
+        <Button color='primary' variant='contained' style={buttonStyle} onClick={commentSubmit}>Submit</Button>
         <DialogActions>
             <Button onClick={handleTaskClose}>Close</Button>
         </DialogActions>
