@@ -10,28 +10,23 @@ import Profile from "./components/Profile";
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
-  const [mountains, setMountains] = useState([])
+  
 
   useEffect(() => {
     fetch("http://localhost:4000/me")
-    .then(resp => {
+    .then((resp) => {
       if(resp.ok){
         resp.json().then((user) => setCurrentUser(user))
       }
-      else{
-        resp.json()
-        .then((error) => console.log(error))
-      }
+      // else{
+      //   resp.json()
+      //   .then((error) => console.log(error))
+      // }
     })
-  }, [ ])
+  }, [])
 
  
 
-  useEffect(() => {
-    fetch('/mountains')
-    .then((resp) => resp.json())
-    .then((list) => {setMountains(list)});
-  }, [])
 
   console.log(currentUser)
 
@@ -43,9 +38,9 @@ function App() {
     <Header setCurrentUser={setCurrentUser}></Header>
     <div>
     <Routes>
-      <Route exact path="/" element={<Mountain mountains={mountains}/>}/>
+      <Route exact path="/" element={<Mountain/>}/>
       {/* <Route exact path="/alltrails" element={<TrailsList/>}/> */}
-      <Route path="/mountains/:id" element={<MountainCard currentUser={currentUser} mountains={mountains}/>}/>
+      <Route path="/mountains/:id" element={<MountainCard currentUser={currentUser}/>}/>
       <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>}/>
       <Route path="/signup" element={<SignUp />}/>
       <Route path="/profile" element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>

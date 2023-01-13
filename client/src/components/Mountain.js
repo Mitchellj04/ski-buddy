@@ -1,7 +1,17 @@
+import { useState, useEffect } from "react";
 import MountainList from "./MoutainList";
 import Grid from '@mui/material/Unstable_Grid2';
 
-function Mountain({mountains}){
+function Mountain(){
+
+    const [mountains, setMountains] = useState([])
+
+    useEffect(() => {
+        fetch('/mountains')
+        .then((resp) => resp.json())
+        .then((list) => {setMountains(list)});
+      }, [])
+    
 
  
     console.log(mountains)

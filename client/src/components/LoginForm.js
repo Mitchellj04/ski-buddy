@@ -1,10 +1,11 @@
-import { Paper, Grid, Typography, Avatar, TextField, Button, Error} from '@mui/material'
+import { Paper, Grid, Typography, Avatar, TextField, Button, Error, FormControl, Alert} from '@mui/material'
 import React, { useState } from 'react'
 
 const LoginForm = ({setCurrentUser}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState([])
+    const [loading, setLoading] = useState(false)
     // const [login, setLogin] = useState('')
     const paperStyle ={
         padding: '30px 20px',
@@ -20,27 +21,27 @@ const LoginForm = ({setCurrentUser}) => {
     // }
 
    function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
         const user = {
             username, 
             password
         }
-        fetch('/login',{
+        fetch("/login",{
             method: "POST", 
             headers:{ 'Content-Type':'application/json'},
             body: JSON.stringify(user)
         })
         .then(resp => {
             if(resp.ok){
-                resp.json().then(setCurrentUser)
+                resp.json().then((user) => setCurrentUser(user))
             }
             else{
-                resp.json().then((error) => setErrors(error))
+                resp.json().then((errors) => setErrors(errors.error))
             }
         })
    }
    
-console.log()
+// console.log(errors.error)
 //    console.log(username)
 //    console.log(password)
 
@@ -50,18 +51,19 @@ console.log()
         <Paper elevation={20} style={paperStyle}>
             <Grid>
             <Avatar>
-
             </Avatar>
             <h2>Login</h2>
             <Typography>Please Login below</Typography>
             </Grid>
-            <form onClick={handleSubmit}>
+            <form onSubmit={handleSubmit}>
+                <FormControl>
             <TextField 
                 fullWidth 
                 label="username"
                 value={username} 
                 style={fieldStyle}
-                onChange={(e) => setUsername(e.target.value)}/>
+                onChange={(e) => setUsername(e.target.value)}/></FormControl>
+                <FormControl>
             <TextField 
                 fullWidth 
                 type="password"
@@ -69,10 +71,8 @@ console.log()
                 style={fieldStyle}
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)}/>
-            {errors.map((error) => (
-                <Error>{error}</Error>
-            ))}
-                <Button variant="contained" type="submit" color="primary">Login</Button>
+                <Button variant="contained" type="submit" color="primary">Login</Button></FormControl>
+                {errors.map((err) => <Alert severity='error'>{err}</Alert>)}
             </form>
         </Paper>
     </Grid>

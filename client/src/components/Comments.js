@@ -15,7 +15,8 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
     const handleClose = () => {setHideEdit(false);};
     const [value, setValue] = useState(comments.rating)
     console.log(comments)
-    
+  
+
     const paperStyle ={
         padding: '30px 20px',
         width: "100%", 

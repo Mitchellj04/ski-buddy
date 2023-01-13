@@ -18,7 +18,7 @@ const Profile = ({currentUser, setCurrentUser}) => {
     // const [experience, setExperience] = useState('')
     // const [bio, setBio] = useState('')
     const [profile, setProfile] = useState(currentUser)
-    console.log(profile)
+    // console.log(profile)
     const handleTaskOpen = () => {setHideEditTrail(true)}
     const handleTaskClose = () => {setHideEditTrail(false)}
 

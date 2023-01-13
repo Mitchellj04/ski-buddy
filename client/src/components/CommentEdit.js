@@ -2,14 +2,34 @@ import { Button, TextField } from '@mui/material';
 import React from 'react'
 import { useState } from 'react';
 
-const CommentEdit = ({comments, showComments, setShowComments, setHideEdit}) => {
+const CommentEdit = ({comments, showComments, setShowComments, setHideEdit, updatingComment}) => {
 
     const [editComment, setEditComment] = useState(comments)
 
-    const handleChange = (e) => {setEditComment({...comments, [e.target.name]: e.target.value})}
+    const handleChange = (e) => {setEditComment({...editComment, [e.target.name]: e.target.value})}
 
-    const handleEdit = (editor) => {
-        fetch(`/comments/${editor.id}`, {
+    function updatingComment(change){
+        setHideEdit(false)
+        const updatedComment = showComments.map((edit) =>{
+             if(edit.id === change.id){
+                return change
+             }
+             else{
+                return edit
+             }
+        })
+        setShowComments(updatedComment)
+    }
+
+   function handleEdit(e){
+        console.log(e)
+        e.preventDefault()
+        const editor ={
+            title: editComment.title,
+            description: editComment.description,
+            rating: editComment.rating
+        }
+        fetch(`/comments/${editComment.id}`, {
             method: "PATCH",
             headers: {
                 "Accept": "application/json",
@@ -21,29 +41,36 @@ const CommentEdit = ({comments, showComments, setShowComments, setHideEdit}) => 
                 rating: editor.rating
             })
         })
-        .then((resp) => console.log(resp))
+        .then((resp) => resp.json())
+        .then((resp) => updatingComment(resp))
     }
 
-    const updatingComment = (change) => {
-        handleEdit(change)
 
-        const updatedComment = showComments.map((edit) =>
-        edit.id === change.id ? change : edit)
-    }
 
-    const handleSubmit = () => {
-        updatingComment(editComment)
-        setHideEdit(false)
-    }
 
-    // console.log(editComment)
+
+    // const handleSubmit = () => {
+    //     console.log(updatingComment(updatedComment))
+    //     // setHideEdit(false)
+    // }
+
+
   return (
     <div>
-        <form>
-            <TextField value={editComment.title} name='title' onChange={handleChange}/>
-            <TextField value={editComment.description} name='description' onChange={handleChange}/>
-            <TextField value={editComment.rating} name='rating' onChange={handleChange}/>
-            <Button onClick={handleSubmit}>Submit</Button>
+        <form onSubmit={handleEdit}>
+            <TextField 
+                value={editComment.title} 
+                name='title' 
+                onChange={handleChange}/>
+            <TextField 
+                value={editComment.description} 
+                name='description' 
+                onChange={handleChange}/>
+            <TextField
+                value={editComment.rating} 
+                name='rating' 
+                onChange={handleChange}/>
+            <Button type="submit">Submit</Button>
         </form>
     </div>
   )

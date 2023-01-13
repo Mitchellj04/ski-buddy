@@ -15,9 +15,9 @@ const SignUp = ({setCurrentUser, currentUser}) => {
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
-    // const [bio, setBio] = useState('')
-    // const [experience_level, SetExperience]= useState('')
-    // const [login, setLogin] = useState('')
+    const [bio, setBio] = useState('')
+    const [experience_level, SetExperience]= useState('')
+    const [login, setLogin] = useState('')
     const [userCurrent, setUserCurrent] = useState(null)
 
     const paperStyle ={
@@ -34,8 +34,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
             password, 
             name,
             age,
-
-            // experience_level
+            experience_level
         }
         fetch('/users',{
             method: "POST", 
@@ -54,17 +53,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
         // navigate("/")
    }
 
-
-   console.log(currentUser)
-
-//    const handleNavigate = () => {
-//     // navigate("/")
-//    }
-//    const handleLogin = () =>{
-//     // navigate("/login")
-//    }
-
-
+//    console.log(currentUser)
 
   return (
       <>
@@ -77,7 +66,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                       <h2>Sign Up</h2>
                       <Typography variant='caption'>Please sign up below!</Typography>
                   </Grid>
-                  <form >
+                  <form onSubmit={handleSubmit}>
                       <TextField 
                         fullWidth 
                         label="username"
@@ -112,7 +101,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                         label="password"
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)}/>
-                      <Button variant="contained" type="submit" color="primary" onClick={handleSubmit}>Sign Up</Button>
+                      <Button variant="contained" type="submit" color="primary">Sign Up</Button>
                   </form>
               </Paper>
           </Grid>

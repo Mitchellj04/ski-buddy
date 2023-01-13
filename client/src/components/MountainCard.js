@@ -15,7 +15,7 @@ import { faCircle, faDiamond, faSnowplow, faSquare, faSnowflake } from '@fortawe
 library.add(faSnowplow, faDiamond, faSquare, faCircle, faSnowflake)
 
 
-const MountainCard = ({mountains, currentUser}) => {
+const MountainCard = ({currentUser}) => {
 
     const [showMountain, setShowMountain] = useState('')
     const [showTrails, setShowTrails] = useState([])

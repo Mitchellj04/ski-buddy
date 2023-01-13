@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     wrap_parameters format: []
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
+    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
     skip_before_action :authorize, only: :create
 
     def show 
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
     def create 
        user = User.create!(user_params)
+       session[:user_id] = user.id
        render json: user, status: :ok
     end
 
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     private 
 
     def render_unprocessable(invalid)
-        render json: {errors: "Unknown user name or password"}, stauts: 404
+        render json: {errors: "Username cannot be blank"}, stauts: 404
     end
 
     def find_user 
