@@ -18,10 +18,10 @@ function App() {
       if(resp.ok){
         resp.json().then((user) => setCurrentUser(user))
       }
-      // else{
-      //   resp.json()
-      //   .then((error) => console.log(error))
-      // }
+      else{
+        resp.json()
+        .then((error) => console.log(error))
+      }
     })
   }, [])
 
