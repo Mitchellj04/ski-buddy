@@ -12,13 +12,9 @@ import FormLabel from '@mui/material/FormLabel';
 const Profile = ({currentUser, setCurrentUser}) => {
 
     const [hideEditTrail, setHideEditTrail] = useState(false)
-    // const [username, setUsername] = useState('')
-    // const [name, setName] = useState('')
-    // const [age, setAge] = useState('')
-    // const [experience, setExperience] = useState('')
-    // const [bio, setBio] = useState('')
     const [profile, setProfile] = useState(currentUser)
-    // console.log(profile)
+    const [value, setValue] = useState(profile.experience_level)
+
     const handleTaskOpen = () => {setHideEditTrail(true)}
     const handleTaskClose = () => {setHideEditTrail(false)}
 
@@ -48,7 +44,8 @@ const Profile = ({currentUser, setCurrentUser}) => {
   }
 
   const handleChange = (e) => {setProfile({...profile, [e.target.name]: e.target.value})}
-  // const handleChange = (e) => {console.log(e.target.value)}
+  const handleExperience = (e) => {setValue(e.target.value)}
+
 
   const handleEditSubmit = (e) => {
     e.preventDefault()
@@ -56,7 +53,7 @@ const Profile = ({currentUser, setCurrentUser}) => {
       username: profile.username,
       name: profile.name,
       age: profile.age,
-      experience: profile.experience,
+      experience_level: value,
       bio: profile.bio
     }
     fetch(`/users/${currentUser.id}`, {
@@ -71,10 +68,10 @@ const Profile = ({currentUser, setCurrentUser}) => {
     .then((user) => {setCurrentUser(user) 
       setHideEditTrail(false)
     })
-   
+    console.log(updatedUser)
   }
-   
-    console.log(currentUser.id)
+    console.log(value)
+    console.log(currentUser)
   return (
     <Box style={boxStyle}>
         <AccountCircleIcon />
@@ -116,10 +113,10 @@ const Profile = ({currentUser, setCurrentUser}) => {
                   defaultValue="Beginner"
                   name="radio-buttons-group"
                   style={{ display: 'initial' }}
-                  onChange={(e) => console.log(e.target.name)}>
-                  <FormControlLabel value={profile.experience} name="Beginner" control={<Radio />} label="Beginner" />
-                  <FormControlLabel value={profile.experience} name="Advanced" control={<Radio />} label="Advanced" />
-                  <FormControlLabel value={profile.experience} name="Expert" control={<Radio />} label="Expert" />
+                  onChange={handleExperience}>
+                  <FormControlLabel value={"Beginner"} name="experience" id={'Beginner'} control={<Radio />} label="Beginner" />
+                  <FormControlLabel value={"Advanced"} name="experience" id={'Advanced'} control={<Radio />} label="Advanced" />
+                  <FormControlLabel value={"Expert"} name="experience" id="Expert" control={<Radio />} label="Expert" />
               </RadioGroup>
           </FormControl>
           <TextField

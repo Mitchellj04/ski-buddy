@@ -13,7 +13,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
     const [hideEdit, setHideEdit] = useState(false)
     const handleClickOpen = () => {setHideEdit(true);};
     const handleClose = () => {setHideEdit(false);};
-    const [value, setValue] = useState(comments.rating)
+    const [values, setValue] = useState(comments.rating)
     console.log(comments)
   
 
@@ -91,7 +91,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
         <Paper style={paperStyle}>
         <Typography variant='h5' fontWeight={"Bold"} style={{paddingBottom: 10}}>{comments.title}</Typography>
         <Typography>{comments.description}</Typography>
-        <Rating value={value} precision={0.5}/>
+        <Rating value={values} precision={0.5}/>
        
         <Typography fontWeight={"Light"}>User: {comments.username}</Typography> 
         {showButton()}

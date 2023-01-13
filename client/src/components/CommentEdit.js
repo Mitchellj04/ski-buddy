@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material';
 import React from 'react'
 import { useState } from 'react';
 
-const CommentEdit = ({comments, showComments, setShowComments, setHideEdit, updatingComment}) => {
+const CommentEdit = ({comments, showComments, setShowComments, setHideEdit}) => {
 
     const [editComment, setEditComment] = useState(comments)
 
@@ -44,15 +44,6 @@ const CommentEdit = ({comments, showComments, setShowComments, setHideEdit, upda
         .then((resp) => resp.json())
         .then((resp) => updatingComment(resp))
     }
-
-
-
-
-
-    // const handleSubmit = () => {
-    //     console.log(updatingComment(updatedComment))
-    //     // setHideEdit(false)
-    // }
 
 
   return (
