@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
-import { Avatar, Button, TextField, Typography } from '@mui/material';
+import { Avatar, Button, TextField, Typography, Alert } from '@mui/material';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -13,6 +13,11 @@ const SignUp = ({setCurrentUser, currentUser}) => {
 
     const [newProfile, setNewProfile] = useState([])
     const [value, setValue] = useState("Beginner")
+    const [errors, setErrors] = useState([])
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [experience_level, setExperience] = useState('')
+    const [age, setAge] = useState('')
 
 
     const paperStyle ={
@@ -25,7 +30,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
       }
 
 
-    const handleNewProfile = (e) => {setNewProfile({...newProfile, [e.target.name]: e.target.value})}
+    const handleNewProfile = (e) => {setNewProfile()}
     const handleExperience = (e) => {setValue(e.target.value)}
 
 
@@ -48,10 +53,11 @@ const SignUp = ({setCurrentUser, currentUser}) => {
         .then(resp => {
             if(resp.ok){
                 resp.json().then((user) => setCurrentUser(user));
-                console.log(currentUser)
             }
             else {
-                resp.json().then((err) => console.log(err))
+                resp.json().then((err) => {
+                console.log(err.error) 
+                setCurrentUser([])})
             }
         })
         console.log(newProfile)
@@ -115,7 +121,9 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                         value={newProfile.password} 
                         onChange={handleNewProfile}/>
                       <Button variant="contained" type="submit" color="primary">Sign Up</Button>
+                      {errors.map((err) => <Alert severity='error'>{err}</Alert>)}
                   </form>
+                  
               </Paper>
           </Grid>
     </>

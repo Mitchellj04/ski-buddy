@@ -1,4 +1,4 @@
-import { Paper, Grid, Typography, Avatar, TextField, Button, Error, FormControl, Alert} from '@mui/material'
+import { Paper, Grid, Typography, Avatar, TextField, Button, FormControl, Alert} from '@mui/material'
 import React, { useState } from 'react'
 
 const LoginForm = ({setCurrentUser}) => {
@@ -16,9 +16,6 @@ const LoginForm = ({setCurrentUser}) => {
         margin: '5px auto'
       }
 
-    // const handleSignUp = () => {
-    //     // navigate("/signup")
-    // }
 
    function handleSubmit(e) {
         e.preventDefault();
@@ -76,11 +73,6 @@ const LoginForm = ({setCurrentUser}) => {
             </form>
         </Paper>
     </Grid>
-    {/* <form onClick={handleSubmit}>
-        <li>Username:<input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)}></input></li>
-        <li>Password:<input type="text" id="password" value={password} onChange={(e) => setPassword(e.target.value)}></input></li>
-        <button type='submit' value={"login"} onClick={() => setLogin(true)}>Login</button>
-    </form>     */}
     </>
   )
 }

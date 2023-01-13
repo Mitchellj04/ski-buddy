@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
+  const [errors, setErrors] = useState([])
   
 
   useEffect(() => {
@@ -20,7 +21,10 @@ function App() {
       }
       else{
         resp.json()
-        .then((error) => console.log(error))
+        .then((error) => {
+          setErrors(error)
+          setCurrentUser(null)
+        })
       }
     })
   }, [])

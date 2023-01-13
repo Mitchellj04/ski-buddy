@@ -4,6 +4,6 @@ class User < ApplicationRecord
     has_secure_password
     validates :username, presence: true 
     validates :name, presence: true 
-    # validates :password, presence: true
+    validates :password, presence: true
     # validates :password, length {in: 6..20} 
 end
