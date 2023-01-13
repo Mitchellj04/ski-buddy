@@ -10,14 +10,10 @@ import FormLabel from '@mui/material/FormLabel';
 
 
 const SignUp = ({setCurrentUser, currentUser}) => {
-    // const [username, setUsername] = useState('')
-    // const navigate = useNavigate()
-    // const [password, setPassword] = useState('')
-    // const [name, setName] = useState('')
-    // const [age, setAge] = useState('')
+
     const [newProfile, setNewProfile] = useState([])
     const [value, setValue] = useState("Beginner")
-    // const [experience_level, setExperience]= useState('')
+
 
     const paperStyle ={
         padding: '30px 20px',

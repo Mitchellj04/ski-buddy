@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     wrap_parameters format: []
-    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
     skip_before_action :authorize, only: :create
 
     def show 
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     private 
 
     def render_unprocessable(invalid)
-        render json: {errors: "Username cannot be blank"}, stauts: 404
+        render json: {errors: "Username or Password cannot be blank"}, stauts: 404
     end
 
     def find_user 
