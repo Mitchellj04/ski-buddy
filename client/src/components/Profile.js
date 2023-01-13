@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../App.css'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Paper, Typography, Box, TextField } from '@mui/material'
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Paper, Typography, Box, TextField, Alert } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -68,10 +68,17 @@ const Profile = ({currentUser, setCurrentUser}) => {
     .then((user) => {setCurrentUser(user) 
       setHideEditTrail(false)
     })
-    console.log(updatedUser)
   }
-    console.log(value)
-    console.log(currentUser)
+
+  function addBio() {
+    if(currentUser.bio === "Please add a bio"){
+      return <Alert severity='info'>Please Add a Bio</Alert>
+    }
+    else {
+      return currentUser.bio
+    }
+  }
+
   return (
     <Box style={boxStyle}>
         <AccountCircleIcon />
@@ -142,7 +149,7 @@ const Profile = ({currentUser, setCurrentUser}) => {
         <Typography style={textStyle} fontWeight="Bold">Name: <Typography>{currentUser.name}</Typography></Typography>   
         <Typography style={textStyle} fontWeight="Bold">Age: <Typography>{currentUser.age}</Typography></Typography>
         <Typography style={textStyle} fontWeight="Bold">Skill Level: <Typography>{currentUser.experience_level}</Typography></Typography>
-        <Typography style={textStyle} fontWeight="Bold">Bio: <Typography>{currentUser.bio}</Typography></Typography>
+        <Typography style={textStyle} fontWeight="Bold">Bio: <Typography>{addBio()}</Typography></Typography>
         </Paper>
       </Box>
 

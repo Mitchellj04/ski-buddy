@@ -10,34 +10,40 @@ import FormLabel from '@mui/material/FormLabel';
 
 
 const SignUp = ({setCurrentUser, currentUser}) => {
-    const [username, setUsername] = useState('')
+    // const [username, setUsername] = useState('')
     // const navigate = useNavigate()
-    const [password, setPassword] = useState('')
-    const [name, setName] = useState('')
-    const [age, setAge] = useState('')
-    const [newProfile, setNewProfile] = useState()
+    // const [password, setPassword] = useState('')
+    // const [name, setName] = useState('')
+    // const [age, setAge] = useState('')
+    const [newProfile, setNewProfile] = useState([])
     const [value, setValue] = useState("Beginner")
-    const [experience_level, setExperience]= useState('')
+    // const [experience_level, setExperience]= useState('')
 
     const paperStyle ={
         padding: '30px 20px',
         width: 400, 
         margin: '20px auto'
     }
+    const fieldStyle = {
+        margin: '5px auto'
+      }
 
 
-    const handleExperience = (e) => {setExperience(e.target.value)}
-    console.log(experience_level)
+    const handleNewProfile = (e) => {setNewProfile({...newProfile, [e.target.name]: e.target.value})}
+    const handleExperience = (e) => {setValue(e.target.value)}
+
 
    function handleSubmit(e) {
         e.preventDefault()
         const user = {
-            username, 
-            password, 
-            name,
-            age,
-            experience_level
+            username: newProfile.username, 
+            password: newProfile.password, 
+            name: newProfile.name,
+            age: newProfile.age,
+            experience_level: value,
+            bio: "Please add a bio"
         }
+        console.log(user)
         fetch('/users',{
             method: "POST", 
             headers:{ 'Content-Type':'application/json'},
@@ -52,6 +58,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                 resp.json().then((err) => console.log(err))
             }
         })
+        console.log(newProfile)
    }
 
 
@@ -70,25 +77,32 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                       <TextField 
                         fullWidth 
                         label="username"
-                        value={username} 
-                        onChange={(e) => setUsername(e.target.value)}/>
+                        name="username"
+                        style={fieldStyle}
+                        value={newProfile.username} 
+                        onChange={handleNewProfile}/>
                       <TextField 
                         fullWidth 
                         label="name"
-                        value={name} 
-                        onChange={(e) => setName(e.target.value)}/>
+                        name="name"
+                        style={fieldStyle}
+                        value={newProfile.name} 
+                        onChange={handleNewProfile}/>
                       <TextField 
                         fullWidth 
                         label="age" 
                         type="number"
-                        value={age} 
-                        onChange={(e) => setAge(e.target.value)}/>
+                        name="age"
+                        style={fieldStyle}
+                        value={newProfile.age} 
+                        onChange={handleNewProfile}/>
                       <FormControl>
                           <FormLabel id="demo-radio-buttons-group-label">Experience Level</FormLabel>
                           <RadioGroup
                               aria-labelledby="demo-radio-buttons-group-label"
                               defaultValue="Beginner"
                               name="radio-buttons-group"
+                              style={fieldStyle}
                               style={{ display: 'initial' }}
                               onChange={handleExperience}>
                               <FormControlLabel value="Beginner" control={<Radio />} label="Beginner" />
@@ -100,8 +114,10 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                         fullWidth 
                         type="password"
                         label="password"
-                        value={password} 
-                        onChange={(e) => setPassword(e.target.value)}/>
+                        name="password"
+                        style={fieldStyle}
+                        value={newProfile.password} 
+                        onChange={handleNewProfile}/>
                       <Button variant="contained" type="submit" color="primary">Sign Up</Button>
                   </form>
               </Paper>
