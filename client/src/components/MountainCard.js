@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Comments from './Comments';
 import CreateComment from './CreateComment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library, text } from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCircle, faDiamond, faSnowplow, faSquare, faSnowflake } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -61,7 +61,7 @@ const MountainCard = ({currentUser}) => {
             </Typography>
             <img src={showMountain.image_url}></img>
             <p>Number of Trails: {showMountain.number_trails}</p>
-            <p>Number of Lists: {showMountain.number_lifts}</p>
+            <p>Number of Lifts: {showMountain.number_lifts}</p>
             <p>Mountain Summit Elevation: {showMountain.elevation} ft</p>
             <Accordion className="Accordion-side" style={{ width: "100%", color: "white", backgroundColor: "#5ea4ff"}}>
               <AccordionSummary

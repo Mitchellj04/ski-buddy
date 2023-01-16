@@ -12,8 +12,6 @@ const Login = ({setCurrentUser, currentUser}) => {
 
   return (
     <div>
-        {/* <Header /> */}
-        {/* <h3>Ski-Buddy Login</h3> */}
         { loggedIn ? (
             <>
             <LoginForm setCurrentUser={setCurrentUser}/>
