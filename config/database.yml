@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: ski_buddy_production
-  username: ski_buddy
-  password: <%= ENV["SKI_BUDDY_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
