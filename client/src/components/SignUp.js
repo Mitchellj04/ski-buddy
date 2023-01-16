@@ -121,7 +121,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                         value={password} 
                         onChange={e => setPassword(e.target.value)}/>
                       <Button variant="contained" type="submit" color="primary">Sign Up</Button>
-                      {errors.map((err) => <Alert severity='error'>{err}</Alert>)}
+                      {errors.map((err) => <Alert key="id" severity='error'>{err}</Alert>)}
                   </form>
                   
               </Paper>

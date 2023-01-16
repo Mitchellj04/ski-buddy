@@ -69,7 +69,7 @@ const LoginForm = ({setCurrentUser}) => {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)}/>
                 <Button variant="contained" type="submit" color="primary">Login</Button></FormControl>
-                {errors.map((err) => <Alert severity='error'>{err}</Alert>)}
+                {errors.map((err) => <Alert key="id" severity='error'>{err}</Alert>)}
             </form>
         </Paper>
     </Grid>
