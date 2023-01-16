@@ -14,9 +14,9 @@ const SignUp = ({setCurrentUser, currentUser}) => {
     const [newProfile, setNewProfile] = useState([])
     const [value, setValue] = useState("Beginner")
     const [errors, setErrors] = useState([])
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [experience_level, setExperience] = useState('')
+    const [username, setUsername] = useState(null)
+    const [password, setPassword] = useState(null)
+    const [name, setName] = useState('')
     const [age, setAge] = useState('')
 
 
@@ -30,17 +30,17 @@ const SignUp = ({setCurrentUser, currentUser}) => {
       }
 
 
-    const handleNewProfile = (e) => {setNewProfile()}
+    // const handleNewProfile = (e) => {setNewProfile()}
     const handleExperience = (e) => {setValue(e.target.value)}
 
 
    function handleSubmit(e) {
         e.preventDefault()
         const user = {
-            username: newProfile.username, 
-            password: newProfile.password, 
-            name: newProfile.name,
-            age: newProfile.age,
+            username, 
+            password, 
+            name,
+            age,
             experience_level: value,
             bio: "Please add a bio"
         }
@@ -52,15 +52,15 @@ const SignUp = ({setCurrentUser, currentUser}) => {
         })
         .then(resp => {
             if(resp.ok){
-                resp.json().then((user) => setCurrentUser(user));
+                resp.json().then((user) => {setCurrentUser(user)
+                console.log(resp)});
             }
             else {
                 resp.json().then((err) => {
-                console.log(err.error) 
-                setCurrentUser([])})
+               setErrors(err.error) 
+                })
             }
         })
-        console.log(newProfile)
    }
 
 
@@ -81,23 +81,23 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                         label="username"
                         name="username"
                         style={fieldStyle}
-                        value={newProfile.username} 
-                        onChange={handleNewProfile}/>
+                        value={username} 
+                        onChange={e => setUsername(e.target.value)}/>
                       <TextField 
                         fullWidth 
                         label="name"
                         name="name"
                         style={fieldStyle}
-                        value={newProfile.name} 
-                        onChange={handleNewProfile}/>
+                        value={name} 
+                        onChange={e => setName(e.target.value)}/>
                       <TextField 
                         fullWidth 
                         label="age" 
                         type="number"
                         name="age"
                         style={fieldStyle}
-                        value={newProfile.age} 
-                        onChange={handleNewProfile}/>
+                        value={age} 
+                        onChange={e => setAge(e.target.value)}/>
                       <FormControl>
                           <FormLabel id="demo-radio-buttons-group-label">Experience Level</FormLabel>
                           <RadioGroup
@@ -118,8 +118,8 @@ const SignUp = ({setCurrentUser, currentUser}) => {
                         label="password"
                         name="password"
                         style={fieldStyle}
-                        value={newProfile.password} 
-                        onChange={handleNewProfile}/>
+                        value={password} 
+                        onChange={e => setPassword(e.target.value)}/>
                       <Button variant="contained" type="submit" color="primary">Sign Up</Button>
                       {errors.map((err) => <Alert severity='error'>{err}</Alert>)}
                   </form>
