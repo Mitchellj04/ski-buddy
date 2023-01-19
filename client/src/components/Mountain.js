@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import MountainList from "./MoutainList";
 import Grid from '@mui/material/Unstable_Grid2';
+import { Button } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Mountain(){
 
     const [mountains, setMountains] = useState([])
+    const navigate = useNavigate('')
+
 
     useEffect(() => {
         fetch('/mountains')
@@ -23,6 +27,7 @@ function Mountain(){
 
     return (
         <>
+        
         <Grid container
         style={{padding: 100}}>
         {mountainList}

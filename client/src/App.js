@@ -6,6 +6,7 @@ import Mountain from "./components/Mountain";
 import MountainCard from "./components/MountainCard";
 import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
+import Elevation from "./Elevation";
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
       <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>}/>
       <Route path="/signup" element={<SignUp />}/>
       <Route path="/profile" element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
+    
     </Routes>
     </div>
     </Router>

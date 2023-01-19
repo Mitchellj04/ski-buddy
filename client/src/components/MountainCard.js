@@ -43,7 +43,7 @@ const MountainCard = ({currentUser}) => {
         setShowComments(mountain.comments)})
     }, [id])
 
-
+ 
 
     const trailMap = showTrails.map((trail) => <TrailsList trail={trail} key={trail.id}/>)
     const commentMap = showComments.map((comments) => <Comments key={comments.id} comments={comments} currentUser={currentUser} showComments={showComments} setShowComments={setShowComments}/>)

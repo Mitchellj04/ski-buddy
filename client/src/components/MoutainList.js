@@ -34,6 +34,7 @@ function MountainList({list}){
     return (
         <>
         <Box>
+        
         <Grid container        
                 direction="row"
                 justify="center"
@@ -47,7 +48,7 @@ function MountainList({list}){
                 <img src={list.image_url} className={"mountain-image"}></img>
                 </div>
                 <Typography variant="h6" color="primary" fontWeight={"Bold"}>Number of Trails:<Typography variant="body1" color="black" className="body1">{list.number_trails}</Typography> </Typography>
-                <Typography variant="h6" color="primary" fontWeight={"Bold"}>Number of Lists:<Typography variant="body1" color="black">{list.number_lifts}</Typography></Typography>
+                <Typography variant="h6" color="primary" fontWeight={"Bold"}>Number of Lifts:<Typography variant="body1" color="black">{list.number_lifts}</Typography></Typography>
                 <Typography variant="h6" color="primary" fontWeight={"Bold"}>Mountain Summit Elevation: <Typography variant="body1" color="black">{list.elevation} ft</Typography></Typography>
                 <Button onClick={handleMountain}>Trails >>></Button>
                 </Item>
