@@ -15,7 +15,7 @@ class MountainsController < ApplicationController
     end
 
     def practice
-        elev = 3200
+        # elev = 3200
         mountain = Mountain.mountain_elevation(params[:elevation]) 
         render json: mountain, status: :ok
     end
