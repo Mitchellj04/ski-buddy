@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :mountains, through: :comments 
     has_many :comments
+    has_many :mountains, through: :comments 
     has_secure_password
     validates :username, presence: true 
     validates :name, presence: true 

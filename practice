@@ -1,0 +1,17 @@
+  def practice
+        # elev = 3200
+        elev = params[:height]
+        elevation = elev.to_i
+        mountain = Mountain.mountain_elevation(elevation) 
+        render json: mountain, status: :ok
+    end
+
+get "/elevation/:height", to: "mountains#practice"
+
+
+def self.mountain_elevation n 
+    mountain = Mountain.all 
+    mountain.select do |elev| 
+        elev.elevation > n 
+    end
+end

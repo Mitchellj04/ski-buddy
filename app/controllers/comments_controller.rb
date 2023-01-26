@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
         render json: comment, status: :created
     end
 
+    
     def destroy
         comment = find_comment 
         comment.destroy

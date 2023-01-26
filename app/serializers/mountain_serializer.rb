@@ -6,4 +6,7 @@ class MountainSerializer < ActiveModel::Serializer
   def average_ticket
     "Average Ticket Cost $#{self.object.average_cost}"
   end
+  
+  
+
 end

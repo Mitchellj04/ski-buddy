@@ -85,6 +85,8 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
         }
     }
 
+    // Also you MUST show the through relationship so I would expect to see my mountains (all the mountains I have commented on = user.mountains) or all the users that have reviewed a given mountain (looks like you render all a mountains reviews which does show the user that it belongs to but you do not render mountain.users).  Reschedule using the same link when you are done. 
+
 
   return (
     <Box>

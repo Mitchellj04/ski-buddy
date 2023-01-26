@@ -8,6 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import ProfileMountain from './ProfileMountain';
 
 const Profile = ({currentUser, setCurrentUser}) => {
 
@@ -18,6 +19,7 @@ const Profile = ({currentUser, setCurrentUser}) => {
     const handleTaskOpen = () => {setHideEditTrail(true)}
     const handleTaskClose = () => {setHideEditTrail(false)}
 
+    console.log(currentUser)
   const paperStyle ={
       padding: '30px 20px',
       width: 400, 
@@ -78,6 +80,13 @@ const Profile = ({currentUser, setCurrentUser}) => {
       return currentUser.bio
     }
   }
+
+  // const mountainComments = currentUser.map((comment) => comment.mountains)
+  const [userMountain, setUserMountain] = useState([currentUser])
+
+  const mountainComments = userMountain.map((user) => <ProfileMountain user={user}/>)
+
+
 
   return (
     <Box style={boxStyle}>
@@ -153,6 +162,12 @@ const Profile = ({currentUser, setCurrentUser}) => {
         </Paper>
       </Box>
 
+    <Box>
+      <Paper>
+        <Typography>Commented Mountains:</Typography>
+        <Typography>{mountainComments}</Typography>
+      </Paper>
+    </Box>
     </Box>
   )
 }
