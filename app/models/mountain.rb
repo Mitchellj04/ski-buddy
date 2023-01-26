@@ -1,7 +1,8 @@
 class Mountain < ApplicationRecord
     has_many :trails 
-    has_many :comments
+     has_many :comments
     has_many :users, through: :comments
+   
     validates :name, presence: true 
     validates :name, uniqueness: true 
 

@@ -82,11 +82,10 @@ const Profile = ({currentUser, setCurrentUser}) => {
   }
 
   // const mountainComments = currentUser.map((comment) => comment.mountains)
-  const [userMountain, setUserMountain] = useState([currentUser])
-
-  const mountainComments = userMountain.map((user) => <ProfileMountain user={user}/>)
-
-
+  const [userMountain, setUserMountain] = useState(currentUser.mountains)
+  const [userComments, setUserComments] = useState(currentUser.comments)
+  const mountainMap = userMountain.map((user) => <ProfileMountain user={user} userComments={userComments} id={user.id} key={user.id}/>)
+  // const commentMap = userComments.map((comment) => )
 
   return (
     <Box style={boxStyle}>
@@ -163,11 +162,9 @@ const Profile = ({currentUser, setCurrentUser}) => {
       </Box>
 
     <Box>
-      <Paper>
-        <Typography>Commented Mountains:</Typography>
-        <Typography>{mountainComments}</Typography>
-      </Paper>
-    </Box>
+        <Typography variant="h4">Commented Mountains:</Typography>
+        {mountainMap}
+      </Box>
     </Box>
   )
 }

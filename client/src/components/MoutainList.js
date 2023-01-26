@@ -10,7 +10,7 @@ function MountainList({list}){
     const navigate = useNavigate('')
     // const {id} = useParams()
     // const [trails, setTrails] = useState(list.trails)
-    console.log(list.id)
+    console.log(list)
     // console.log(trails)
 
     // const trailMap = trails.map((trail) => <TrailsList trail={trail}/>)
