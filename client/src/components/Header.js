@@ -19,6 +19,7 @@ function Header({setCurrentUser}) {
     setAnchorEl(e.currentTarget);
   };
 
+  //Delete currentUser (session/user)
   function handleLogout (){
     setAnchorEl(null)
     fetch('/logout', 
@@ -30,6 +31,7 @@ function Header({setCurrentUser}) {
      })
 
   }
+
   function handleHome(){
     navigate('/')
   }
@@ -38,6 +40,7 @@ function Header({setCurrentUser}) {
     setAnchorEl(null);
     navigate('/profile')
   };
+
   return (
     <div className='navBar'>
      <AppBar style={{textAlign: "center", alignItems: "center", width: "100%",}} >
@@ -90,16 +93,6 @@ function Header({setCurrentUser}) {
         </Toolbar>
       </AppBar>
     </div>
-      // {/* <h1>Ski Buddy</h1>
-      // <nav>
-        
-      //    <h3> Home</h3>
-    
-       
-      //     <h3>Add Trail</h3>
-    
-      // </nav> */}
-
   );
 }
 

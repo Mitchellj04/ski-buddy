@@ -18,6 +18,7 @@ library.add(faSnowplow, faDiamond, faSquare, faCircle, faSnowflake)
 
 const MountainCard = ({ currentUser }) => {
 
+  //All data (Mountains,Trails,Comments)
   const [showMountain, setShowMountain] = useState('')
   const [showTrails, setShowTrails] = useState([])
   const [showComments, setShowComments] = useState([])
@@ -57,11 +58,11 @@ const MountainCard = ({ currentUser }) => {
       })
   }, [id])
 
-  console.log(mountainID)
-  const [ratingFilter, setRatingFilter] = useState('')
-  const [commentFilter, setCommentFilter] = useState([])
 
-  //
+  // const [ratingFilter, setRatingFilter] = useState('')
+  // const [commentFilter, setCommentFilter] = useState([])
+
+  // //
   // const handleSubmit = (e) => {
   //   e.preventDefault()
   //   const commentRating = {

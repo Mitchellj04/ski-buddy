@@ -7,19 +7,22 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 
 function MountainList({list}){
+
     const navigate = useNavigate('')
-    // const {id} = useParams()
-    // const [trails, setTrails] = useState(list.trails)
+
     console.log(list)
     // console.log(trails)
-
+    // const {id} = useParams()
+    // const [trails, setTrails] = useState(list.trails)
     // const trailMap = trails.map((trail) => <TrailsList trail={trail}/>)
 
+    //Navigate to Mountain
     const handleMountain = () => {
         navigate(`/mountains/${list.id}`)
     
     }
 
+    //Styling
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,

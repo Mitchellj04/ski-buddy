@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 
 const MountainCreate = ({setMountains, setHideCreate}) => {
 
+    //Mountain Params
     const [mountainName, setName] = useState('')
     const [mountainTrails, setTrails] = useState('')
     const [mountainLifts, setLifts] = useState('')
@@ -10,10 +11,12 @@ const MountainCreate = ({setMountains, setHideCreate}) => {
     const [mountainImage, setImage] = useState('')
     const [errors, setErrors] = useState([])
 
+    //Styling
     const fieldStyle = {
         margin: '5px auto'
       }
 
+    //Handle New Mountain
     const submitMountain = (e) => {
         e.preventDefault()
        const mountain = {

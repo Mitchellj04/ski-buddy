@@ -2,11 +2,14 @@ import { Paper, Grid, Typography, Avatar, TextField, Button, FormControl, Alert}
 import React, { useState } from 'react'
 
 const LoginForm = ({setCurrentUser}) => {
+
+    //Login Params
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState([])
     const [loading, setLoading] = useState(false)
-    // const [login, setLogin] = useState('')
+
+    //Login Styling
     const paperStyle ={
         padding: '30px 20px',
         width: 400, 
@@ -17,6 +20,7 @@ const LoginForm = ({setCurrentUser}) => {
       }
 
 
+      //Handle Login
    function handleSubmit(e) {
         e.preventDefault();
         const user = {
@@ -37,10 +41,6 @@ const LoginForm = ({setCurrentUser}) => {
             }
         })
    }
-   
-// console.log(errors.error)
-//    console.log(username)
-//    console.log(password)
 
   return (
     <>

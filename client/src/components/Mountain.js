@@ -2,19 +2,21 @@ import { useState, useEffect } from "react";
 import MountainList from "./MoutainList";
 import Grid from '@mui/material/Unstable_Grid2';
 import { Button } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
 import MountainCreate from "./MountainCreate";
-import {Dialog, DialogActions, DialogContent,  DialogTitle, Box, TextField} from '@mui/material';
+import {Dialog, DialogActions, DialogContent,  DialogTitle} from '@mui/material';
 
 function Mountain(){
 
+
     const [mountains, setMountains] = useState([])
-    const navigate = useNavigate('')
+ 
     const [hideCreate, setHideCreate] = useState(false)
+
     const handleClickOpen = () => {setHideCreate(true);};
     const handleClose = () => {setHideCreate(false);};
 
 
+    //Fetch Mountain Data
     useEffect(() => {
         fetch('/mountains')
         .then((resp) => resp.json())
@@ -22,12 +24,8 @@ function Mountain(){
       }, [])
     
 
-    console.log(mountains)
-
-    // const mountain = mountains.map((list) => <MountainList list={list}/>)
-
     const mountainList = mountains.map((list) => <MountainList key={list.id} list={list} />)
-    // mount
+
     
 
     return (
