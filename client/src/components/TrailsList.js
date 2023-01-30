@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library, text } from '@fortawesome/fontawesome-svg-core'
 import { faCircle, faDiamond, faSnowplow, faSquare, faSnowflake } from '@fortawesome/free-solid-svg-icons'
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 
 library.add(faSnowplow, faDiamond, faSquare, faCircle, faSnowflake)
@@ -17,6 +17,7 @@ const TrailsList = ({trail}) => {
     border: 1,
   }
 
+  // console.log(trail)
 
  function groomedTrail(){
   if (trail.groomed === true){

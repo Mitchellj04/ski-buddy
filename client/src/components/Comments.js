@@ -14,7 +14,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
     const handleClickOpen = () => {setHideEdit(true);};
     const handleClose = () => {setHideEdit(false);};
     const [values, setValue] = useState(comments.rating)
-    console.log(comments)
+    // console.log(comments)
   
 
     const paperStyle ={

@@ -5,8 +5,8 @@ const CreateComment = (
     {setShowComments, 
         currentUser, 
         showMountain,
-        setHideEditTrail,
-        handleTaskClose}) => {
+        setHideEditComment,
+        handleCommentClose}) => {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -36,7 +36,7 @@ const CreateComment = (
         })
         .then((resp) => resp.json())
         .then((data) => setShowComments((prevState) => [...prevState, data]))
-        setHideEditTrail(false)
+        setHideEditComment(false)
       }
 
   return (
@@ -68,7 +68,7 @@ const CreateComment = (
         </DialogContent>
         <Button color='primary' variant='contained' style={buttonStyle} onClick={commentSubmit}>Submit</Button>
         <DialogActions>
-            <Button onClick={handleTaskClose}>Close</Button>
+            <Button onClick={handleCommentClose}>Close</Button>
         </DialogActions>
     </Box>
   )

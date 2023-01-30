@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [:create, :update, :show]
   resources :comments, only: [:create, :destroy, :show, :update]
-  resources :trails, only: [:index]
+  resources :trails, only: [:index, :create]
   resources :mountains, only: [:index, :show, :create]
   post "/login", to: "sessions#create"
   # get '/auth', to: "user#show"
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get "/practice/:id", to: 'mountains#groomed'
+  post "/comments/:id", to: 'mountains#comments'
   get "/practice", to: 'trails#groomed'
  
   # post "/comments", to: 'comments#create'

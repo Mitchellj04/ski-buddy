@@ -15,3 +15,51 @@ def self.mountain_elevation n
         elev.elevation > n 
     end
 end
+
+
+# def groomed
+#     trails = ""
+#    trail_count = ""
+#    mountain = find_mountain
+#    trails = mountain.groomed_trails
+# #    mountain.each do |t|
+# #     trail_count = t.ticket_cost
+# #     trails = "#{trail_count} out of the #{t.trails.count} trails are open"
+# #    end
+#     render json: trails
+# end
+    # def groomed_trails
+    #     count = 0
+    #     trail = []
+    #     # mountain = Mountain.all
+    #     self.trails.each do |t|
+    #         if t.groomed == true 
+    #         count += 1
+    #         trail << t
+    #         end
+    #     end
+    #     "#{count} out of the #{self.trails.count} are groomed"
+    #     trail
+    # end
+
+    # // const filteredMap = filterTrails.map((trails) => { return <> <p>{trails.trail_name}</p>
+    # // <p>{trails.difficulty}</p></>})
+    # // const trailsData = () => {
+    # //   if (showTrails.length === 0){
+    # //    return <p>Please add trails</p>
+    # //   }
+    # //   else{
+    # //     {trailMap}
+    # //   }
+    # // }
+
+    //   const [filterTrails, setFilterTrails] = useState(["filter trails above"])
+
+    // const handleFilter = (e) => {
+    //   e.preventDefault()
+    //   fetch(`/practice/${id}`)
+    //   .then((resp) => resp.json())
+    //   .then((mountain) => setFilterTrails(mountain))
+    // }
+  
+    // console.log(filterTrails)

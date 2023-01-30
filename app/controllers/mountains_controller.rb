@@ -24,17 +24,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :mountain_error
         end
     end
 
-    # def groomed
-    #     trails = ""
-    #    trail_count = ""
-    #    mountain = find_mountain
-    #    trails = mountain.groomed_trails
-    # #    mountain.each do |t|
-    # #     trail_count = t.ticket_cost
-    # #     trails = "#{trail_count} out of the #{t.trails.count} trails are open"
-    # #    end
-    #     render json: trails
-    # end
+    def comments 
+        mountain = find_mountain
+        comment = mountain.comment_rating(params[:rating])
+        render json: comment 
+    end
 
 
     private 
