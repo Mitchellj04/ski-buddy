@@ -14,9 +14,8 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
     const handleClickOpen = () => {setHideEdit(true);};
     const handleClose = () => {setHideEdit(false);};
     const [values, setValue] = useState(comments.rating)
-    // console.log(comments)
   
-
+  //Styling
     const paperStyle ={
         padding: '30px 20px',
         width: "100%", 
@@ -24,6 +23,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
         paddingTop: 50
   
     }
+
 
     function handleDeleteComment(deleted){
         const filterDelete = showComments.filter((comment) => {
@@ -36,6 +36,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
         setShowComments(filterDelete);
       }
 
+    //Handle comment delete
     function handleDelete(){
         fetch(`/comments/${comments.id}`, {
             method: "DELETE", 
@@ -47,7 +48,7 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
         console.log(comments.id)
     }
 
-
+    //If user is signed in show buttons 
     function showButton(){
         if (currentUser.id === comments.user_id){
             return <>
@@ -84,9 +85,6 @@ const Comments = ({comments, currentUser, showComments, setShowComments}) => {
 
         }
     }
-
-    // Also you MUST show the through relationship so I would expect to see my mountains (all the mountains I have commented on = user.mountains) or all the users that have reviewed a given mountain (looks like you render all a mountains reviews which does show the user that it belongs to but you do not render mountain.users).  Reschedule using the same link when you are done. 
-
 
   return (
     <Box>

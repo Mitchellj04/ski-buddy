@@ -12,7 +12,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [errors, setErrors] = useState([])
   
-
+  //Sessions & User fetch
   useEffect(() => {
     fetch("http://localhost:4000/me")
     .then((resp) => {
@@ -29,11 +29,7 @@ function App() {
     })
   }, [])
 
- 
-
-
-  console.log(currentUser)
-
+  //User check login valid
   if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
 
   return (
@@ -43,12 +39,10 @@ function App() {
     <div>
     <Routes>
       <Route exact path="/" element={<Mountain/>}/>
-      {/* <Route exact path="/alltrails" element={<TrailsList/>}/> */}
       <Route path="/mountains/:id" element={<MountainCard currentUser={currentUser}/>}/>
       <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>}/>
       <Route path="/signup" element={<SignUp />}/>
       <Route path="/profile" element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
-    
     </Routes>
     </div>
     </Router>

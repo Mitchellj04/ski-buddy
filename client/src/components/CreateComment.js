@@ -8,9 +8,12 @@ const CreateComment = (
         setHideEditComment,
         handleCommentClose}) => {
 
+    //Comment params
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [rating, setRating] = useState('')
+
+    //Styling
     const fieldStyle = {
         margin: '5px auto'
       }
@@ -20,6 +23,7 @@ const CreateComment = (
     }
 
 
+    //Submit new comment
     const commentSubmit = (e) => {
         e.preventDefault()
         const newComment = {

@@ -21,6 +21,7 @@ const CommentEdit = ({comments, showComments, setShowComments, setHideEdit}) => 
         setShowComments(updatedComment)
     }
 
+    //Edit comment fetch
    function handleEdit(e){
         console.log(e)
         e.preventDefault()
