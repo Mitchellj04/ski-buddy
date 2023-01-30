@@ -16,39 +16,41 @@ const Profile = ({currentUser, setCurrentUser}) => {
     const [profile, setProfile] = useState(currentUser)
     const [value, setValue] = useState(profile.experience_level)
 
+    //Handle Dialog Open/Close
     const handleTaskOpen = () => {setHideEditTrail(true)}
     const handleTaskClose = () => {setHideEditTrail(false)}
 
     console.log(currentUser)
-  const paperStyle ={
+  //Styling
+    const paperStyle ={
+        padding: '30px 20px',
+        width: 400, 
+        margin: '20px auto'
+    }
+    const profileStyle ={
       padding: '30px 20px',
-      width: 400, 
+      width: 600, 
+      margin: '20px auto',
+      textAlign: "left"
+    }
+    const fieldStyle = {
+      margin: '5px auto'
+    }
+    const boxStyle = {
+      paddingTop: "100px",
+      width: 500, 
       margin: '20px auto'
-  }
-  const profileStyle ={
-    padding: '30px 20px',
-    width: 600, 
-    margin: '20px auto',
-    textAlign: "left"
-}
-  const fieldStyle = {
-    margin: '5px auto'
-  }
-  const boxStyle = {
-    paddingTop: "100px",
-    width: 500, 
-    margin: '20px auto'
 
-  }
+    }
+    const textStyle = {
+      paddingTop: 10
+    }
 
-  const textStyle = {
-    paddingTop: 10
-  }
-
+  //Handle Params Change
   const handleChange = (e) => {setProfile({...profile, [e.target.name]: e.target.value})}
   const handleExperience = (e) => {setValue(e.target.value)}
 
-
+  //Handle Edit Profile/User
   const handleEditSubmit = (e) => {
     e.preventDefault()
     const updatedUser = {
@@ -72,6 +74,8 @@ const Profile = ({currentUser, setCurrentUser}) => {
     })
   }
 
+
+  //If no bio add a bio
   function addBio() {
     if(currentUser.bio === "Please add a bio"){
       return <Alert severity='info'>Please Add a Bio</Alert>
@@ -81,11 +85,11 @@ const Profile = ({currentUser, setCurrentUser}) => {
     }
   }
 
-  // const mountainComments = currentUser.map((comment) => comment.mountains)
+
   const [userMountain, setUserMountain] = useState(currentUser.mountains)
   const [userComments, setUserComments] = useState(currentUser.comments)
   const mountainMap = userMountain.map((user) => <ProfileMountain user={user} userComments={userComments} id={user.id} key={user.id}/>)
-  // const commentMap = userComments.map((comment) => )
+
 
   return (
     <Box style={boxStyle}>

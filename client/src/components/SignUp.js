@@ -11,6 +11,7 @@ import FormLabel from '@mui/material/FormLabel';
 
 const SignUp = ({setCurrentUser, currentUser}) => {
 
+    //New user Params
     const [newProfile, setNewProfile] = useState([])
     const [value, setValue] = useState("Beginner")
     const [errors, setErrors] = useState([])
@@ -19,7 +20,7 @@ const SignUp = ({setCurrentUser, currentUser}) => {
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
 
-
+    //Styling
     const paperStyle ={
         padding: '30px 20px',
         width: 400, 
@@ -30,10 +31,10 @@ const SignUp = ({setCurrentUser, currentUser}) => {
       }
 
 
-    // const handleNewProfile = (e) => {setNewProfile()}
     const handleExperience = (e) => {setValue(e.target.value)}
 
 
+    //Handle Create new user/signup
    function handleSubmit(e) {
         e.preventDefault()
         const user = {

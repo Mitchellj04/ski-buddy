@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 // import { useParams } from 'react-router'
 import TrailsList from './TrailsList';
 import { useParams } from 'react-router-dom';
-import { Dialog, DialogTitle, Accordion, AccordionSummary, Typography, AccordionDetails, Box, Paper, Button, TextField } from '@mui/material';
+import { Dialog, DialogTitle, Accordion, AccordionSummary, Typography, AccordionDetails, Box, Paper, Button} from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Comments from './Comments';

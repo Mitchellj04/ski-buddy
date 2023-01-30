@@ -3,14 +3,14 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 
 function MountainList({list}){
 
     const navigate = useNavigate('')
 
-    console.log(list)
+    // console.log(list)
     // console.log(trails)
     // const {id} = useParams()
     // const [trails, setTrails] = useState(list.trails)
