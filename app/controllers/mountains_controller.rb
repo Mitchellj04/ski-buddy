@@ -24,10 +24,17 @@ rescue_from ActiveRecord::RecordInvalid, with: :mountain_error
         end
     end
 
-    def comments 
-        mountain = find_mountain
-        comment = mountain.comment_rating(params[:rating])
-        render json: comment 
+    def trails 
+        debugger
+        number = params[:number_of_trails]
+        mountain = Mountain.all
+        mountains = mountain.select { |i| i.number_trails > number.to_i}
+        if mountains.length > 0 
+        render json: mountains, status: 200
+        else 
+        render json: {errors: "No mountain found."}
+        end
+
     end
 
 

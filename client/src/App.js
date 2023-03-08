@@ -29,6 +29,8 @@ function App() {
     })
   }, [])
 
+  console.log(currentUser)
+
   //User check login valid
   if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
 
