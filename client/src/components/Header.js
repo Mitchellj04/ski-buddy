@@ -43,7 +43,7 @@ function Header({setCurrentUser}) {
 
   return (
     <div className='navBar'>
-     <AppBar style={{textAlign: "center", alignItems: "center", width: "100%",}} >
+     <AppBar position="static" style={{textAlign: "center", alignItems: "center", width: "100%", backgroundColor: 'inherit', color: 'black'}} >
         <Toolbar>
           <div className='home'>
             <IconButton

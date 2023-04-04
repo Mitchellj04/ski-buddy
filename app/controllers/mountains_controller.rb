@@ -25,7 +25,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :mountain_error
     end
 
     def trails 
-        debugger
         number = params[:number_of_trails]
         mountain = Mountain.all
         mountains = mountain.select { |i| i.number_trails > number.to_i}

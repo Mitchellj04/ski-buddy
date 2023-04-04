@@ -10,13 +10,13 @@
 }
 
 .menu{
-    position: fixed;
+    position: static;
     right: 5%;
 }
 
 .home{
-    position: fixed;
-    left: 5%;
+    position: static;
+    left: 25%;
 }
 
 .profile{
