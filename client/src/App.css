@@ -9,16 +9,6 @@
     align-items: center;
 }
 
-.menu{
-    position: static;
-    right: 5%;
-}
-
-.home{
-    position: static;
-    left: 25%;
-}
-
 .profile{
     padding-top: 100px;
     align-items: center;
@@ -44,4 +34,17 @@ h6{
 .body1{
     padding-top: 2px;
     padding-bottom: 2px;
+}
+
+.profile{
+    position: static;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    top: 1;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background-image: url('./Images/skiBuddyHeader.jpeg');
+    background-size: cover;
 }

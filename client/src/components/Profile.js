@@ -37,8 +37,10 @@ const Profile = ({currentUser, setCurrentUser}) => {
       margin: '5px auto'
     }
     const boxStyle = {
+      // backgroundImage:  `url(/Images/skiBuddyHeader.jpeg)` ,
+      // background: 'cover',
       paddingTop: "100px",
-      width: 500, 
+      width: '100%', 
       margin: '20px auto'
 
     }
@@ -92,9 +94,9 @@ const Profile = ({currentUser, setCurrentUser}) => {
 
 
   return (
-    <Box style={boxStyle}>
-        <AccountCircleIcon />
-        <Button className='task-button-edit' onClick={handleTaskOpen}  startIcon={<EditIcon className='editButton'/>}></Button>
+    <Box style={boxStyle} className='profile'>
+        
+       
         <Dialog
         open={hideEditTrail}
         keepMounted
@@ -155,8 +157,12 @@ const Profile = ({currentUser, setCurrentUser}) => {
           </DialogActions>
            </form>
       </Dialog>  
-      <Box styler={{alignItems: 'center', textAlign: 'center', width: 500}}>
-        <Paper style={profileStyle}>
+      <Box styler={{alignItems: 'center', textAlign: 'center', width: 500, backgroundColor: 'white'}}>
+      
+       
+        <Paper style={profileStyle}> 
+        <AccountCircleIcon fontSize='200px' style={{textAlign: 'center'}}/>
+         <Button className='task-button-edit' onClick={handleTaskOpen}  startIcon={<EditIcon className='editButton'/>}></Button>
         <Typography style={textStyle} fontWeight="Bold">Username:<Typography>{currentUser.username}</Typography></Typography>
         <Typography style={textStyle} fontWeight="Bold">Name: <Typography>{currentUser.name}</Typography></Typography>   
         <Typography style={textStyle} fontWeight="Bold">Age: <Typography>{currentUser.age}</Typography></Typography>
@@ -166,8 +172,10 @@ const Profile = ({currentUser, setCurrentUser}) => {
       </Box>
 
     <Box>
+      <Paper style={profileStyle}>
         <Typography variant="h4">Commented Mountains:</Typography>
         {mountainMap}
+        </Paper>
       </Box>
     </Box>
   )

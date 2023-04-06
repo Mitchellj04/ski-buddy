@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography} from '@mui/material'
+import { AppBar, Box, Container, Toolbar, Typography} from '@mui/material'
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 // import MenuIcon from '@mui/icons-material';
@@ -42,10 +42,10 @@ function Header({setCurrentUser}) {
   };
 
   return (
-    <div className='navBar'>
-     <AppBar position="static" style={{textAlign: "center", alignItems: "center", width: "100%", backgroundColor: 'inherit', color: 'black'}} >
+     <AppBar position="static" style={{ backgroundColor: 'inherit', color: 'black'}} >
+      <Container maxWidth="xl">
         <Toolbar>
-          <div className='home'>
+          <Box className='home' >
             <IconButton
               size="large"
               edge="start"
@@ -55,16 +55,18 @@ function Header({setCurrentUser}) {
               onClick={handleHome}
             >  <HomeIcon />
             </IconButton>
-          </div>
-          <Typography variant='h4' style={{}}>Ski Buddy</Typography>
+          </Box>
+          <Box style={{textAlign: 'center'}}>
+          <Typography variant='h4' >Ski Buddy</Typography>
+          </Box>
           {auth && (
-            <div className='menu'>
+            <Box className='menu' sx={{flexGrow: 1, display: { xs: 'flex' }}}>
               <IconButton
-                size="large"
+                size="xl"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                style={{align:"right"}}
+                style={{marginLeft: 'auto'}}
                 onClick={handleMenu}
                 color="inherit"
               >
@@ -88,11 +90,11 @@ function Header({setCurrentUser}) {
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleLogout}>Sign Out</MenuItem>
               </Menu>
-            </div>
+            </Box>
           )}
         </Toolbar>
+        </Container>
       </AppBar>
-    </div>
   );
 }
 

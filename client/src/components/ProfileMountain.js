@@ -21,8 +21,8 @@ const ProfileMountain = ({user, userComments}) => {
     
   return (
     <>
-        <Box>
-           <Typography variant="h4">{mountain.name}</Typography>
+        <Box style={{marginTop: 10}}>
+           <Typography variant="h4" style={{color: 'blue'}}>{mountain.name}</Typography>
            <Typography>Comment:</Typography>{commentMap}
         </Box>
         

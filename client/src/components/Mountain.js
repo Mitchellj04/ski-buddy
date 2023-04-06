@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import MountainList from "./MoutainList";
 import Grid from '@mui/material/Unstable_Grid2';
-import { Button } from "@mui/material";
+import { AppBar, Button, Fab, Menu, MenuItem } from "@mui/material";
 import MountainCreate from "./MountainCreate";
 import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import skiBackground from '../Images/skiBuddyHeader.jpeg'
+import AddIcon from '@mui/icons-material/Add';
 
 function Mountain() {
 
@@ -14,7 +16,8 @@ function Mountain() {
 
     const handleClickOpen = () => { setHideCreate(true); };
     const handleClose = () => { setHideCreate(false); };
-
+    const handleClick = (event) => {setAnchorEl(event.currentTarget)}
+    const handleClickClose = () => {setAnchorEl(null)}
 
     //Fetch Mountain Data
     useEffect(() => {
@@ -30,7 +33,7 @@ function Mountain() {
 
     return (
         <>
-            <img className='headerImage' src='/Images/skiBuddyHeader.jpeg' style={{ width: "100%", height: "100%", objectFit: 'cover' }} />
+            <img className='headerImage' src={skiBackground} style={{ width: "100%", height: "100%", objectFit: 'cover' }} />
             <Button style={{ marginTop: 100 }} onClick={handleClickOpen} variant={"contained"}>Create</Button>
             <Dialog
                 open={hideCreate}
@@ -48,6 +51,32 @@ function Mountain() {
                 style={{ padding: 100 }}>
                 {mountainList}
             </Grid>
+            <AppBar 
+              position="fixed" 
+              elevation={0} 
+              color="primary" 
+              style={{top: "auto", bottom: 0, alignItems: "center", background: "transparent"}}>
+                <Fab 
+                  id="plus-button"
+                  onClick={handleClick} 
+                  style={{background: "#1976D2", color: "white"}} 
+                  aria-controls={open ? 'create-menu' : undefined}
+                  aria-haspopup={"true"}
+                  aria-expanded={open ? true : undefined}>
+                  <AddIcon/>
+                </Fab>
+                <Menu
+                    id="create-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClickClose}
+                    MenuListProps={{
+                      'aria-labelledby': 'plus-button',
+                    }}>
+                  <MenuItem onClick={menuProject}>Create Project</MenuItem>
+                  <MenuItem onClick={menuTask}>Create Task</MenuItem>
+                </Menu>
+            </AppBar>
         </>
     )
 }
