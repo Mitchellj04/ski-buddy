@@ -11,8 +11,9 @@ function Mountain() {
 
 
     const [mountains, setMountains] = useState([])
-
+    const [anchorEl ,setAnchorEl] = useState(null)
     const [hideCreate, setHideCreate] = useState(false)
+    const open = Boolean(anchorEl)
 
     const handleClickOpen = () => { setHideCreate(true); };
     const handleClose = () => { setHideCreate(false); };
@@ -34,7 +35,6 @@ function Mountain() {
     return (
         <>
             <img className='headerImage' src={skiBackground} style={{ width: "100%", height: "100%", objectFit: 'cover' }} />
-            <Button style={{ marginTop: 100 }} onClick={handleClickOpen} variant={"contained"}>Create</Button>
             <Dialog
                 open={hideCreate}
                 keepMounted
@@ -73,8 +73,7 @@ function Mountain() {
                     MenuListProps={{
                       'aria-labelledby': 'plus-button',
                     }}>
-                  <MenuItem onClick={menuProject}>Create Project</MenuItem>
-                  <MenuItem onClick={menuTask}>Create Task</MenuItem>
+                  <MenuItem onClick={handleClickOpen}>Create Mountain</MenuItem>
                 </Menu>
             </AppBar>
         </>
